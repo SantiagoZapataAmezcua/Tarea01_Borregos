@@ -19,6 +19,7 @@
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{ragged2e}
 
 \definecolor{azul}{RGB}{25,94,164}
 \setlist[itemize]{leftmargin=*, topsep=4pt}
@@ -65,8 +66,78 @@ Describe al menos dos escenarios concretos:
   \item Otro donde s\'i sea preferible optar por ellas. Justifica cada caso.
 \end{itemize}
 
+    \textbf{Respuesta:}\\
+\textbf{Caracterisicas:}
+\begin{itemize}
+    \item \textbf{A futuro(escalable):} 
+    \begin{itemize}
+        \item Las bases de datos soportan millones de registros y múltiples usuarios accediendo al mismo tiempo sin pérdida de rendimiento.
+        \item Las hojas de cálculo se vuelven lentas e inestables con grandes volúmenes ademas de que Excel tiene un máximo de 1.048.576 filas y 16.384 columnas.
+    \end{itemize}
+    
+    \item \textbf{Integridad y consistencia:} 
+    \begin{itemize}
+        \item Las bases de datos aplican reglas de integridad (claves primarias, restricciones) que evitan duplicados o inconsistencias en los datos.
+        \item Las hojas de cálculo dependen de que el usuario mantenga fórmulas y datos correctos, lo que facilita errores humanos.
+    \end{itemize}
+
+    \item \textbf{Colaboración:}
+    \begin{itemize}
+        \item Las bases de datos permiten acceso concurrente con control de transacciones.
+        \item Las hojas de cálculo tienen riesgos de sobrescritura o conflictos de edición.
+    \end{itemize}
+
+    \item \textbf{Seguridad:}
+    \begin{itemize}
+        \item Las bases de datos gestionan usuarios, roles y permisos usando a la vez las keys que permiten el acceso a estos datos.
+        \item Las hojas de cálculo solo ofrecen protecciones básicas de celdas o contraseñas.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Limitaciones de las hojas de cálculo}
+ 
+Las hojas de cálculo presentan limitaciones en términos de:
+\begin{itemize}
+    \item Escalabilidad: no soportan grandes volúmenes de datos ni múltiples usuarios simultáneos sin perder rendimiento ademas que no son finitas las columnas y filas, por lo que no pueden abarcar una cantidad infinita de datos sin antes acabarse.
+    \item Integridad y consistencia: dependen de la gestión manual del usuario, aumentando el riesgo de errores y datos inconsistentes, por lo que no mantiene la integridad de los datos.
+\end{itemize}
+\newpage
+\textbf{Escenarios concretos}\\
+\textbf{-Escenario donde NO es adecuado usar hojas de cálculo}
+\begin{itemize}
+    \item La empresa Amazon con mas de 50,000 productos, ademas de tener ventas en tiempo real y múltiples sucursales donde almacenan los productos para su repartición.
+    \item \textbf{Justificación:} Las hojas de cálculo no pueden manejar tantas transacciones simultáneas ni garantizar integridad, ademas de que debe actualizarse manualmente cada vez que se hace una compra y venta. Mientras que una base de datos permite controlar mercancías almacenadas por una empresa de manera mas eficiente, ademas de registrar ventas en línea y evitar la venta de productos inexistentes.
+\end{itemize}
+
+\textbf{-Escenario donde SÍ es preferible usar hojas de cálculo}
+\begin{itemize}
+    \item En un equipo universitario en la facultad de Ciencias de la UNAM que gestiona una lista de 50-200 participantes de inscripciones a las carreras y genera reportes sencillos de cada alumno y su información personal.
+    \item \textbf{Justificación:} El volumen de datos es bajo, no se requiere acceso concurrente complejo y la facilidad de uso de Excel permite rapidez sin necesidad de instalar un SMBD, ademas de una facilidad de emplear una hoja de calculo que una base de datos sin conocimientos previos.
+\end{itemize}
+
 \item Sup\'on que una empresa en crecimiento necesita implementar un Sistema Manejador de Bases de Datos (SMBD) para centralizar su informaci\'on operativa (ventas, clientes, inventario y log\'istica). \\
-Elige dos posibles soluciones (p.\,e., PostgreSQL, Oracle, MySQL, SQL Server, etc.) y compara sus ventajas y desventajas en t\'erminos de: rendimiento ante grandes vol\'umenes de datos; escalabilidad a futuro; costos de licenciamiento y mantenimiento; soporte t\'ecnico y comunidad. Con base en tu an\'alisis, argumenta cu\'al soluci\'on recomendar\'ias y por qu\'e.
+Elige dos posibles soluciones (p.\,e., PostgreSQL, Oracle, MySQL, SQL Server, etc.) y compara sus ventajas y desventajas en t\'erminos de: rendimiento ante grandes vol\'umenes de datos; escalabilidad a futuro; costos de licenciamiento y mantenimiento; soporte t\'ecnico y comunidad. Con base en tu an\'alisis, argumenta cu\'al soluci\'on recomendar\'ias y por qu\'e.\\
+
+\textbf{Respuesta:}
+
+\textbf{PostgreSQL}
+\begin{itemize}
+    \item \textbf{Ventajas:} PostgreSQL tiene una gran capacidad para manejar consultas complejas,también una excelente escalabilidad,junto con un soporte avanzado para tipos de datos como los JSON, ademas de ser código abierto y tener una comunidad activa donde se pueden reportar y solucionar errores de manera mas practica y optimiza ble.
+    \item \textbf{Desventajas:} Lamentablemente tiene una curva de aprendizaje más pronunciada y configuración inicial más exigente,  por lo que acostumbrarse a su uso puede ser demasiado tedioso y confuso.Ademas de tener un rendimiento relativamente más lento en bases de datos pequeñas,junto con una  falta de soporte oficial centralizado en comparación con otros sistemas para un mejor manejo.
+\end{itemize}
+\newpage
+\textbf{MySQL}
+\begin{itemize}
+    \item \textbf{Ventajas:} MySQL al ser un sistema que se basa en un código abierto, le permite a desarrolladores y pequeñas empresas contar con una solución estandarizada y para sus aplicaciones.
+    Cambien este sistema permite realizar una gestión de los datos de una forma organizada y ordenada.
+    Otra de sus ventajas es que lo pueden utilizar varias personas a la vez y efectuar varias consultas al mismo tiempo, lo que lo hace que sea muy versátil.Y lo que lo hace mejor es que es fácil de instalar y configurar
+    \item \textbf{Desventajas:} Sin embargo tiene un menor rendimiento en consultas analíticas complejas, ademas de que no es el más amigable con los los programas que actualmente se utiliza, y agregándole que  tiene ciertas limitaciones en funciones avanzadas junto con altos costos en la versión empresarial.
+\end{itemize}
+
+\textbf{Recomendación}
+Por lo que para una empresa en crecimiento que busca centralizar operaciones de ventas, clientes, inventario y logística, la mejor opción es \textbf{PostgreSQL}, ya que ofrece mayor capacidad de escalabilidad, solidez en el manejo de datos complejos y ausencia de costos de versiones empresariales o licencias. Por que hay que tener en cuenta que MySQL es adecuado para proyectos pequeños o con requerimientos menos complejos, pero PostgreSQL proporciona una base más robusta y preparada para el crecimiento a largo plazo.
+
+
 
 \item Una empresa de log\'istica necesita adaptar su Sistema de Base de Datos para incluir nuevas funcionalidades, como el seguimiento en tiempo real de paquetes y una nueva categor\'ia de clientes corporativos. Antes de realizar estos cambios, el equipo de desarrollo debe considerar los niveles de independencia de los datos. Responde lo siguiente:
 \begin{itemize}
@@ -97,7 +168,7 @@ Elige dos posibles soluciones (p.\,e., PostgreSQL, Oracle, MySQL, SQL Server, et
 
 \item Sup\'on que deseas crear una aplicaci\'on para \textit{gesti\'on hospitalaria}. Considera cada una de las desventajas indicadas en el documento \textit{``Purpose of Database Systems''}, cuando se administran los datos en un sistema de archivos. Discute la relevancia de cada uno de los puntos indicados con respecto a la gesti\'on de datos de pacientes: historial m\'edico, diagn\'osticos, tratamientos, citas, acceso a registros m\'edicos, m\'edicos, especialidades, entre otros.
 \end{enumerate}
-
+\newpage
 \item \textbf{Lectura de art\'iculo}
 
 \begin{enumerate}[label=\textbf{\alph*.}, leftmargin=*, itemsep=1.0em]
@@ -108,6 +179,21 @@ Elige dos posibles soluciones (p.\,e., PostgreSQL, Oracle, MySQL, SQL Server, et
   \item Contenido m\'inimo: tema central del art\'iculo, ideas principales que desarrolla el autor, conclusi\'on o aportaci\'on m\'as importante del texto.
   \item En cuanto al formato, procuren tener p\'arrafos bien estructurados, \textbf{sin vi\~netas ni listas}.
 \end{itemize}
+
+\textbf{Resumen}
+
+En este artículo se analiza cómo la cuarta revolución industrial afecto el mundo como lo conocíamos, impulsada por la tecnología digital, las redes sociales y los dispositivos conectados. Por ello ha transformado nuestra manera de interactuar con el mundo y ha convertido la información personal en un recurso altamente valioso. Y debido a esto las empresas tecnológicas aprovecharon y aprovechan los datos generados por los usuarios para obtener ventajas competitivas, monetizando la información y transformando nuestra identidad digital en un activo económico.
+
+Ademas, muchas veces los usuarios, desconocen qué datos están compartiendo y con quien lo comparten. Este intercambio constante de información a cambio de servicios gratuitos pone en riesgo la privacidad y la confianza en el mercado digital. 
+Por ello nuestra identidad se redefine por nuestro valor en información digital. Por ejemplo, los servicios de redes sociales, como Facebook y Google, no venden productos a los usuarios, sino que los mismos usuarios son activos para anunciantes, transformando nuestra información, ideas y hábitos en mercancía.
+
+Ya que nosotros como usuarios no comprendemos el uso que se le puede dar a nuestros datos en aquel mercado digital y por ello nuestra privacidad, la propiedad de la información y los derechos humanos se ven comprometidos, y surge la pregunta de cómo medir la confianza y el valor de nuestros datos si no somos conscientes de su importancia en la economía digital.
+
+
+
+
+
+
 
 \item Realizar un \textbf{ensayo} donde expresen sus comentarios (cada integrante del equipo deber\'a indicar este punto de forma individual en el documento que redacten) sobre la lectura, considerando los siguientes puntos:
 
@@ -144,9 +230,36 @@ Elige dos posibles soluciones (p.\,e., PostgreSQL, Oracle, MySQL, SQL Server, et
     \end{itemize}
   \end{itemize}
 \end{itemize}
+\newpage
+\textbf{Ensayo\\
+        Autor: Aar\'on L\'opez Mendoza}   
+
+
+En la actualidad gracias al Big Data y el Internet de las Cosas (IoT) nos dan cosas increíbles, como servicios súper personalizados y maneras más fáciles de hacer trámites, sin embargo también es verdad que hay un lado oscuro que no podemos ignorar.\\
+Piénsalo de esta manera: cada vez que tu o una persona le da "aceptar" a los términos y condiciones, abre una app o usan su celular para cualquier acción que involucre una red, están dejando un rastro de datos. Esos datos son tuyos, son como tu huella digital, o tu CURP y con ellos, las empresas, gobiernos o cualquier tercero con conocimientos pueden entenderte mejor, predecir tus gustos y hasta influir en tus decisiones.
+Por ello el problema es que, mientras generamos información a una velocidad indescriptible, la seguridad que debería proteger esta información parece ir a paso de tortuga. Y esto nos deja vulnerables. Terminamos expuestos a que alguien robe nuestra identidad, que haya filtraciones masivas que expongan nuestra vida privada, o que nuestra información sea usada para manipularnos, ya sea para vendernos algo o para influir en nuestra forma de pensar.\\
+
+Y a menudo, los permisos que aceptamos son tan enredados y confusos que ni siquiera sabemos a qué estamos diciendo que sí, sin embargo siempre aceptamos, ya que es muy seguro que 2 de cada 10 personas se detienen a leer los términos y condiciones completos, ya que asumimos que nuestros datos estarán seguros, a pesar de que haya una alta cantidad de datos en circuito o uso. Por ello la falta de transparencia es un problema enorme, que hasta la fecha seguimos sin buscar una solución.
+Entonces, ¿el Big Data y el IoT son buenos o malos? La verdad es que, en este momento, los riesgos superan a los beneficios. Mientras no haya reglas claras, herramientas de protección que realmente funcionen y una cultura digital que ponga a las personas en primer lugar, nuestra privacidad y seguridad personal están en riesgo. La tecnología puede ser una herramienta poderosa y muy útil, pero también puede ser una amenaza si no la manejamos con cuidado.\\
+
+Además, es importante reconocer que el uso de aplicaciones e infomaci\'on digital juega un papel fundamental en todo esto. No basta solo con confiar en que las empresas o los gobiernos protegerán nuestros datos; nuestra responsabilidad como usuarios es que debemos aprender a identificar riesgos, configurar correctamente la privacidad de nuestras cuentas y ser conscientes de qué información compartimos y con quién. El conocimiento en el ámbito digital no solo nos ayuda a protegernos, sino que también nos proporciona una gran habilidad para tomar decisiones informadas sobre nuestra interacción con la tecnología, permitiéndonos aprovechar sus beneficios sin poner en riesgo nuestra seguridad y nuestra vida privada. Por lo que debemos preguntarnos a partir de que tomemos la desici\'on de ingresar al mundo digital, que es lo que queremos hacer y a quienes queremos mostrarle lo que hacemos, con eso en mente podremos tomar mejores decisiones en el mundo digital.
 
 \end{enumerate}
 
 \end{enumerate}
 
+
+\begin{thebibliography}{99}
+    \bibitem{Yung}
+    Yung, Z. (2025, 5 agosto). Spreadsheet vs. Database: Honest Answers to Your Frequent Questions. Coupler.io Blog. \url{https://blog-coupler-io.translate.goog/spreadsheet-vs-database/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc}
+
+    \bibitem{Ganchev}
+    Ganchev, M. (2022, 3 mayo). Database vs Spreadsheet: What is the Difference? 365 Data Science. \url{https://365datascience-com.translate.goog/tutorials/sql-tutorials/database-vs-spreadsheet/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc&_x_tr_hist=true}
+
+    \bibitem{Biuwer}
+    Por qué no debes utilizar Excel como Base de Datos | Biuwer. (s. f.). \url{https://biuwer.com/es/blog/por-que-no-debes-utilizar-excel-como-base-de-datos}
+
+    \bibitem{Gemini}
+    Google Gemini. (s. f.-b). Gemini. \url{https://gemini.google.com/app?hl=es}
+\end{thebibliography}
 \end{document}
