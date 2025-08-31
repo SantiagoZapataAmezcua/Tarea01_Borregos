@@ -1,0 +1,152 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{amsmath, amssymb, mathrsfs}
+\usepackage{fdsymbol}
+\usepackage{forest}
+\usepackage{prooftrees}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{marginnote}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\definecolor{azul}{RGB}{25,94,164}
+\setlist[itemize]{leftmargin=*, topsep=4pt}
+\setlist[enumerate]{leftmargin=*, topsep=6pt}
+
+\begin{document}
+
+% ------------------ PORTADA ------------------
+\pagenumbering{gobble}
+\begin{titlepage}
+\centering
+{\bfseries\LARGE Universidad Nacional Autonoma de M\'exico \par}
+\vspace{1cm}
+{\scshape\Large Facultad de Ciencias \par}
+\vspace{3cm}
+{\scshape\Huge Tarea 1  \par}
+\vspace{3cm}
+{\itshape\Large Fundamentos de Bases de Datos \par}
+\vfill
+{\scshape\Huge Equipo ``BORREGOS'' \par}
+\vspace{3cm}
+{\Large Aron\\ Rocks\\ Isac\\ Kevin\\ Santiago Zapata Amezcua \par}
+\vfill
+\end{titlepage}
+\clearpage
+
+% ------------------ CONTENIDO ------------------
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section*{Tarea 1: Conceptos b\'asicos}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+
+\item \textbf{Conceptos generales:}
+
+\begin{enumerate}[label=\textbf{\alph*.}, leftmargin=*, itemsep=1.0em]
+
+\item Explica las caracter\'isticas fundamentales del enfoque de bases de datos frente al uso de hojas de c\'alculo. \\
+\textit{¿Qu\'e limitaciones enfrentan las hojas de c\'alculo cuando se trata de escalabilidad, integridad y consistencia de datos?} \\
+Describe al menos dos escenarios concretos:
+\begin{itemize}
+  \item Uno donde no sea adecuado usar hojas de c\'alculo.
+  \item Otro donde s\'i sea preferible optar por ellas. Justifica cada caso.
+\end{itemize}
+
+\item Sup\'on que una empresa en crecimiento necesita implementar un Sistema Manejador de Bases de Datos (SMBD) para centralizar su informaci\'on operativa (ventas, clientes, inventario y log\'istica). \\
+Elige dos posibles soluciones (p.\,e., PostgreSQL, Oracle, MySQL, SQL Server, etc.) y compara sus ventajas y desventajas en t\'erminos de: rendimiento ante grandes vol\'umenes de datos; escalabilidad a futuro; costos de licenciamiento y mantenimiento; soporte t\'ecnico y comunidad. Con base en tu an\'alisis, argumenta cu\'al soluci\'on recomendar\'ias y por qu\'e.
+
+\item Una empresa de log\'istica necesita adaptar su Sistema de Base de Datos para incluir nuevas funcionalidades, como el seguimiento en tiempo real de paquetes y una nueva categor\'ia de clientes corporativos. Antes de realizar estos cambios, el equipo de desarrollo debe considerar los niveles de independencia de los datos. Responde lo siguiente:
+\begin{itemize}
+  \item ¿Qu\'e riesgos podr\'ian surgir s\'i no existe independencia l\'ogica entre el dise\~no conceptual y las aplicaciones que consumen los datos?
+  \item ¿Qu\'e problemas operativos aparecer\'ian s\'i no se logra la independencia f\'isica, especialmente en t\'erminos de almacenamiento y rendimiento?
+  \item Proporciona un ejemplo realista en el que un cambio f\'isico no afecte la l\'ogica del sistema, y otro donde un cambio l\'ogico pueda impactar m\'ultiples aplicaciones s\'i no se gestiona adecuadamente.
+\end{itemize}
+
+\item Describe el papel que tienen los Sistemas Manejadores de Bases de Datos (SMBD) en el enfoque de bases de datos. ¿Por qu\'e consideras que es importante (o no) que un administrador de bases de datos (DBA) conozca las caracter\'isticas de un SMBD?
+
+\item Indica las responsabilidades que tiene un Sistema Manejador de Bases de Datos y para cada responsabilidad, explica los problemas que surgir\'ian si dicha responsabilidad no se cumpliera.
+
+\item Investiga qu\'e es la \textit{redundancia de datos}. ¿Cu\'al ser\'ia la diferencia entre \textit{redundancia de datos controlada} y \textit{no controlada}? Proporciona un ejemplo claro de cada tipo. ¿Por qu\'e la redundancia no controlada suele ser un problema para la integridad y consistencia de los datos?
+
+\item Imagina que formas parte del equipo de tecnolog\'ia de una empresa aseguradora que gestiona informaci\'on sobre p\'olizas, clientes, siniestros, evaluaciones de riesgo y cumplimiento normativo. Responde lo siguiente:
+\begin{itemize}
+  \item ¿Cu\'ales son las principales responsabilidades del DBA en este contexto, considerando la necesidad de confidencialidad, trazabilidad y disponibilidad continua de la informaci\'on?
+  \item ¿Qu\'e habilidades t\'ecnicas y conocimientos espec\'ificos (por ejemplo, manejo de datos sensibles, normativas como protecci\'on de datos personales, respaldo y recuperaci\'on ante desastres) son m\'as cr\'iticos para este entorno?
+  \item Si el DBA no ejecuta consultas directamente, ¿por qu\'e sigue siendo necesario que comprenda el modelo l\'ogico de la base de datos? Justifica tu respuesta considerando la importancia de la integridad de los datos en procesos como la evaluaci\'on de riesgos o la detecci\'on de fraudes.
+\end{itemize}
+
+\item A lo largo del tiempo han existido diversos \textit{modelos de datos}, como el modelo jer\'arquico, el modelo de red, el modelo relacional, el modelo orientado a objetos y los modelos NoSQL (llave--valor, documento, columnares, grafos). Responde lo siguiente:
+\begin{itemize}
+  \item Elabora una \textbf{tabla comparativa} entre al menos cuatro modelos de datos, destacando sus principales caracter\'isticas, ventajas, desventajas y casos de uso t\'ipicos.
+  \item ¿Por qu\'e crees que el modelo relacional se convirti\'o en el m\'as ampliamente adoptado durante d\'ecadas?
+  \item ¿En qu\'e contextos actuales, los modelos NoSQL superan al modelo relacional en eficiencia o flexibilidad? Justifica con ejemplos.
+\end{itemize}
+
+\item Sup\'on que deseas crear una aplicaci\'on para \textit{gesti\'on hospitalaria}. Considera cada una de las desventajas indicadas en el documento \textit{``Purpose of Database Systems''}, cuando se administran los datos en un sistema de archivos. Discute la relevancia de cada uno de los puntos indicados con respecto a la gesti\'on de datos de pacientes: historial m\'edico, diagn\'osticos, tratamientos, citas, acceso a registros m\'edicos, m\'edicos, especialidades, entre otros.
+\end{enumerate}
+
+\item \textbf{Lectura de art\'iculo}
+
+\begin{enumerate}[label=\textbf{\alph*.}, leftmargin=*, itemsep=1.0em]
+
+\item Leer el art\'iculo \textit{The value of our personal data in the Big Data and the Internet of all Things Era} y realizar un \textbf{resumen} del documento, destacando los puntos que a su consideraci\'on sean los m\'as relevantes (no m\'as de dos cuartillas).
+\begin{itemize}
+  \item Redacten en sus propias palabras, eviten copiar frases textuales del art\'iculo.
+  \item Contenido m\'inimo: tema central del art\'iculo, ideas principales que desarrolla el autor, conclusi\'on o aportaci\'on m\'as importante del texto.
+  \item En cuanto al formato, procuren tener p\'arrafos bien estructurados, \textbf{sin vi\~netas ni listas}.
+\end{itemize}
+
+\item Realizar un \textbf{ensayo} donde expresen sus comentarios (cada integrante del equipo deber\'a indicar este punto de forma individual en el documento que redacten) sobre la lectura, considerando los siguientes puntos:
+
+\begin{itemize}
+  \item \textbf{Extensi\'on:} entre 1 y 2 cuartillas.
+  \item \textbf{Estructura obligatoria:}
+  \begin{itemize}
+    \item \textbf{Introducci\'on:}
+    \begin{itemize}
+      \item Presenta brevemente el tema del art\'iculo.
+      \item Explica por qu\'e consideras que es importante o relevante.
+      \item Plantea tu postura o idea principal.
+    \end{itemize}
+    \item \textbf{Desarrollo:}
+    \begin{itemize}
+      \item Resume de forma breve los argumentos del autor.
+      \item Relaciona las ideas del art\'iculo con otros conocimientos, lecturas o ejemplos.
+      \item Exp\'on tus propios argumentos (a favor o en contra), justificando con razones claras.
+      \item Puedes incluir ejemplos de la vida real, casos de estudio o tu experiencia personal.
+      \item Deber\'as indicar cu\'al es el objetivo que quiso plantear el autor: qu\'e intenta decir, de qu\'e intenta persuadirnos y/o convencernos, ¿c\'omo se relaciona con la materia de \textit{Fundamentos de Bases de Datos}?
+      \item Deber\'as indicar cu\'al es la tem\'atica central del art\'iculo y se debes se\~nalar el tema o los temas laterales que desarrolla el mismo y c\'omo estos tienen relaci\'on con t\'u pr\'actica profesional.
+    \end{itemize}
+    \item \textbf{Conclusi\'on:}
+    \begin{itemize}
+      \item Reafirma tu postura inicial.
+      \item Explica qu\'e aprendiste o qu\'e aportaci\'on consideras m\'as valiosa.
+      \item Se\~nala si el tema abre preguntas o retos futuros.
+    \end{itemize}
+    \item \textbf{Formato:}
+    \begin{itemize}
+      \item Redacci\'on en p\'arrafos completos, sin listas.
+      \item Usa conectores l\'ogicos (por lo tanto, adem\'as, sin embargo, en conclusi\'on, etc.).
+      \item \textbf{Ortograf\'ia y gram\'atica cuidadas}.
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
