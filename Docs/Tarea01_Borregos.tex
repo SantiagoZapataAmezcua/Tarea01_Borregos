@@ -41,7 +41,7 @@
 \vfill
 {\scshape\Huge Equipo ``BORREGOS'' \par}
 \vspace{3cm}
-{\Large Aron\\ Rocks\\ Isac\\ Kevin\\ Santiago Zapata Amezcua \par}
+{\Large Aron\\ Rocks\\ Isaac Giovani Escobar Gonzalez \\ Kevin\\ Santiago Zapata Amezcua \par}
 \vfill
 \end{titlepage}
 \clearpage
@@ -149,8 +149,59 @@ Por lo que para una empresa en crecimiento que busca centralizar operaciones de 
 \item Describe el papel que tienen los Sistemas Manejadores de Bases de Datos (SMBD) en el enfoque de bases de datos. ¿Por qu\'e consideras que es importante (o no) que un administrador de bases de datos (DBA) conozca las caracter\'isticas de un SMBD?
 
 \item Indica las responsabilidades que tiene un Sistema Manejador de Bases de Datos y para cada responsabilidad, explica los problemas que surgir\'ian si dicha responsabilidad no se cumpliera.
+\textbf{Respuesta:}\\
+Las principales responsabilidades de un \textbf{Sistema Manejador de Bases de Datos} son las siguientes:\\
+\textbf{Definición:} Se podra decidir como estará organizada la Base de Datos para tener un orden de nuestros datos, su tipo, su estructura, relaciónes entre datos, restricciones que habrá y tener consistencia.
+
+\hspace{0.3cm}\textbf{Problemas:} Si no se define, es de esperar encontrar diferentes problemas al momento en nuestra Base de Datos desde tipos incompatibles, datos duplicados, una estructura que no nos favorece, inconsistencias, etc.
+    
+    
+\textbf{Construcción:}
+Es necesario tener y llevar un control sobre los datos que estarán almacenados en la Base de Datos, pues siempre se buscará tener un orden y una organización de los datos, a su vez, también llevar una gestión del espacio en memoria/disco.
+
+\hspace{0.3cm}\textbf{Problemas:} 
+Al no contar con una construcción llevada a cabo por el SMBD, implicaría que los datos pudieran estar desordenados, desornanizados si no se almacenan de forma correcta, ademas sería dificil manejar grandes cantidades de datos por las incosistencias generadas. 
+
+    
+\textbf{Manipular:}
+Es característica fundamental de un SMBD, pues podemos hacer operaciones con los datos almacenados desde realizar consultas, insertar nuevos datos, modificar, eliminar, entre otras más especificas. Nos facilita manipular los datos de una base de datos. 
+
+\hspace{0.3cm}\textbf{Problemas:} 
+Si no estuviera se cumpliera esto, resultaria en que no podriamos realizar operaciones básicas con nuestros datos como recuperar información, tal vez se tendría que programar dichas operaciones pero conlleva a tiempo invertido.
+
+    
+\textbf{Compartir:}
+Es importante que más de un usuario pueda hacer uso de la Base de Datos al mismo tiempo (concurrencia), pues permite que todos los usuario que todos conectados vean en tiempo real lo que hay almacenado y asi no perder la integridad de los datos.
+
+\hspace{0.3cm}\textbf{Problemas:} 
+Si no fuera posible la concurrencia resultaría en la inconsistencia de los datos, por ejemplo: dos usuarios podrían manipular el mismo dato a la vez y se sobreescribirían los cambios realizados por cada uno. 
+    
+\textbf{Seguridad e Integridad:}
+Debe garantizar seguridad a la Base de Datos para evitar el acceso de usuario no autorizados a los datos y así evitar que modifiquen o borren datos importantes. Ademas cada usuario puede ser asignado con ciertos permisos y limitar su control con la base de datos.
+ 
+\hspace{0.3cm}\textbf{Problemas:} 
+Si careciera de esto básico, entonces estarían en peligro todos los datos almacenados estando expuestos a modificaciones o eliminaciones por parte de cualquier persona/usuario que tuviera conexión a la Base de Datos.
+
+\textbf{Recuperación;}
+Es posible que el SMBD cuente con la opción de restaurar o recuperar los datos de la Base de Datos en caso de que se hubiera presentado un problema mayor y resulte en la perdida de los datos. Es recomendado siempre tener un respaldo de todos los datos para evitar cualquier percance y tener un plan de respaldo.
+
+\hspace{0.3cm}\textbf{Problemas:}
+Si no existiera está función de recuperación, es posible que cuando se presente un problema relacionado a los datos, ya sea en la modificación de los datos, migración o incluso en la perdida total, no sería posible recuperar dichos datos almacenados que pudieran ser importantes.
+
 
 \item Investiga qu\'e es la \textit{redundancia de datos}. ¿Cu\'al ser\'ia la diferencia entre \textit{redundancia de datos controlada} y \textit{no controlada}? Proporciona un ejemplo claro de cada tipo. ¿Por qu\'e la redundancia no controlada suele ser un problema para la integridad y consistencia de los datos?
+La \textbf{redundancia de datos} sucede cuando se almacena multiples veces un mismo dato en una Base de Datos, en varias ubicaciones o tablas.\\
+Existen dos tipos de redundancia: la Redundancia Intencional (\textbf{Controlada}) y la Redundancia Involuntaria (\textbf{No Controlada}).\\
+\textbf{Redundancia Controlada:} Sucede cuando la redundancia de datos es hecho con planificación previa, es planificada para poder sacarle provecho bajo una situacion controlada, puede mejorar el rendimiento en algunas ocasiones.
+ 
+ \hspace{0.3cm}\textbf{Ejemplo:} Puede ser el caso en que un mismo dato este almacenado en distintas lugares (tablas, servidores) lo cual podra garantizar su disponibilidad  en el caso en que uno de los servidores fallé, y también protegerlo de pérdidas de datos.
+
+\textbf{Redundancia No Controlada:} Ocurre cuando la redundacia es producto de una mala organizacion o un mal diseño en la Base de Datos, la duplicidad de un dato no fue deseado o planeado y puede generar ineficiencia en el almacenamiento.
+
+ \hspace{0.3cm}\textbf{Ejemplo:} Pudiera ser el caso en donde tengamos a una misma persona registrada dos veces en la Base de Datos, puede que difieran en un campo/dato como el correo pero sigue siendo la misma persona y, por ende, guardando todos los demas datos dos veces (nombre, id, direccion, etc), lo que puede generar más costos no deseados en el almacenamiento si esta situacion sudece más veces.
+
+ Ahora bien, la \textbf{redundancia No Controlada} puede generar inconsistencia y ser negativo para la integridad de los datos puesto que, como comentabamos antes en el ejemplo, puede tenerse más de una vez un mismo dato lo cual podría llevar a que al momento de querer modificarlo tiene que sincronizarse con los demas lugares en los que aparece pues si no se hace entonces perderiamos la consistencia en los datos y también perderiamos la integridad puesto que el dato puede llegar a tener distintos valores. Por esto mismo suele haber problemas cuando se trata de redundancia no controlada, pues viene consigo el degradamiento de rendimiento y aumente los costos con respecto al almacenamiento en la Base de Datos.
+
 
 \item Imagina que formas parte del equipo de tecnolog\'ia de una empresa aseguradora que gestiona informaci\'on sobre p\'olizas, clientes, siniestros, evaluaciones de riesgo y cumplimiento normativo. Responde lo siguiente:
 \begin{itemize}
@@ -261,5 +312,14 @@ Además, es importante reconocer que el uso de aplicaciones e infomaci\'on digit
 
     \bibitem{Gemini}
     Google Gemini. (s. f.-b). Gemini. \url{https://gemini.google.com/app?hl=es}
+
+    \bibitem{IBM}
+    Krantz, T., Jonker, A. (2025, 7 febrero). Redundancia de datos. IBM. \url{https://www.ibm.com/mx-es/think/topics/data-redundancy}
+
+    \bibitem{celerdata}
+    CelerData. (2024, 5 octubre). Data Redundancy: What It Is and How to Manage It. CelerData. \url{https://celerdata.com/glossary/data-redundancy}
+
+    \bibitem{IONOS}
+    SGBD: introducción al sistema gestor de base de datos. (2020, 12 mayo). IONOS Digital Guide. \url{https://www.ionos.mx/digitalguide/hosting/cuestiones-tecnicas/sistema-gestor-de-base-de-datos-sgbd/}
 \end{thebibliography}
 \end{document}
