@@ -8,10 +8,14 @@
 \usepackage{fdsymbol}
 \usepackage{forest}
 \usepackage{prooftrees}
+\usepackage{ltablex}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{booktabs}
+\keepXColumns % mantiene el formato X
+\renewcommand{\arraystretch}{1.2}
 \usepackage{marginnote}
 \usepackage{tcolorbox}
 \usepackage{tikz}
@@ -41,7 +45,7 @@
 \vfill
 {\scshape\Huge Equipo ``BORREGOS'' \par}
 \vspace{3cm}
-{\Large Aron\\ Rocks\\ Isaac Giovani Escobar Gonzalez \\ Kevin\\ Santiago Zapata Amezcua \par}
+{\Large Aaron López Mendoza \\ Rodrigo Zaldivar Alanis \\ Isaac Giovani Escobar Gonzalez \\ Kevin Jonathan Garduño Escobar \\ Santiago Zapata Amezcua \par}
 \vfill
 \end{titlepage}
 \clearpage
@@ -69,13 +73,13 @@ Describe al menos dos escenarios concretos:
     \textbf{Respuesta:}\\
 \textbf{Caracterisicas:}
 \begin{itemize}
-    \item \textbf{A futuro(escalable):} 
+    \item \textbf{A futuro(escalable):}
     \begin{itemize}
         \item Las bases de datos soportan millones de registros y múltiples usuarios accediendo al mismo tiempo sin pérdida de rendimiento.
         \item Las hojas de cálculo se vuelven lentas e inestables con grandes volúmenes ademas de que Excel tiene un máximo de 1.048.576 filas y 16.384 columnas.
     \end{itemize}
-    
-    \item \textbf{Integridad y consistencia:} 
+
+    \item \textbf{Integridad y consistencia:}
     \begin{itemize}
         \item Las bases de datos aplican reglas de integridad (claves, restricciones) que evitan duplicados o inconsistencias en los datos.
         \item Las hojas de cálculo dependen de que el usuario mantenga fórmulas y datos correctos, lo que puede provocar errores humanos.
@@ -95,7 +99,7 @@ Describe al menos dos escenarios concretos:
 \end{itemize}
 
 \textbf{Limitaciones de las hojas de cálculo}
- 
+
 Las hojas de cálculo presentan limitaciones en términos de:
 \begin{itemize}
     \item Escalabilidad: no soportan grandes volúmenes de datos ni múltiples usuarios simultáneos sin perder rendimiento ademas que no son finitas las columnas y filas, por lo que no pueden abarcar una cantidad infinita de datos sin antes acabarse.
@@ -154,32 +158,32 @@ Las principales responsabilidades de un \textbf{Sistema Manejador de Bases de Da
 \textbf{Definición:} Se podra decidir como estará organizada la Base de Datos para tener un orden de nuestros datos, su tipo, su estructura, relaciónes entre datos, restricciones que habrá y tener consistencia.
 
 \hspace{0.3cm}\textbf{Problemas:} Si no se define, es de esperar encontrar diferentes problemas al momento en nuestra Base de Datos desde tipos incompatibles, datos duplicados, una estructura que no nos favorece, inconsistencias, etc.
-    
-    
+
+
 \textbf{Construcción:}
 Es necesario tener y llevar un control sobre los datos que estarán almacenados en la Base de Datos, pues siempre se buscará tener un orden y una organización de los datos, a su vez, también llevar una gestión del espacio en memoria/disco.
 
-\hspace{0.3cm}\textbf{Problemas:} 
-Al no contar con una construcción llevada a cabo por el SMBD, implicaría que los datos pudieran estar desordenados, desornanizados si no se almacenan de forma correcta, ademas sería dificil manejar grandes cantidades de datos por las incosistencias generadas. 
+\hspace{0.3cm}\textbf{Problemas:}
+Al no contar con una construcción llevada a cabo por el SMBD, implicaría que los datos pudieran estar desordenados, desornanizados si no se almacenan de forma correcta, ademas sería dificil manejar grandes cantidades de datos por las incosistencias generadas.
 
-    
+
 \textbf{Manipular:}
-Es característica fundamental de un SMBD, pues podemos hacer operaciones con los datos almacenados desde realizar consultas, insertar nuevos datos, modificar, eliminar, entre otras más especificas. Nos facilita manipular los datos de una base de datos. 
+Es característica fundamental de un SMBD, pues podemos hacer operaciones con los datos almacenados desde realizar consultas, insertar nuevos datos, modificar, eliminar, entre otras más especificas. Nos facilita manipular los datos de una base de datos.
 
-\hspace{0.3cm}\textbf{Problemas:} 
+\hspace{0.3cm}\textbf{Problemas:}
 Si no estuviera se cumpliera esto, resultaria en que no podriamos realizar operaciones básicas con nuestros datos como recuperar información, tal vez se tendría que programar dichas operaciones pero conlleva a tiempo invertido.
 
-    
+
 \textbf{Compartir:}
 Es importante que más de un usuario pueda hacer uso de la Base de Datos al mismo tiempo (concurrencia), pues permite que todos los usuario que todos conectados vean en tiempo real lo que hay almacenado y asi no perder la integridad de los datos.
 
-\hspace{0.3cm}\textbf{Problemas:} 
-Si no fuera posible la concurrencia resultaría en la inconsistencia de los datos, por ejemplo: dos usuarios podrían manipular el mismo dato a la vez y se sobreescribirían los cambios realizados por cada uno. 
-    
+\hspace{0.3cm}\textbf{Problemas:}
+Si no fuera posible la concurrencia resultaría en la inconsistencia de los datos, por ejemplo: dos usuarios podrían manipular el mismo dato a la vez y se sobreescribirían los cambios realizados por cada uno.
+
 \textbf{Seguridad e Integridad:}
 Debe garantizar seguridad a la Base de Datos para evitar el acceso de usuario no autorizados a los datos y así evitar que modifiquen o borren datos importantes. Ademas cada usuario puede ser asignado con ciertos permisos y limitar su control con la base de datos.
- 
-\hspace{0.3cm}\textbf{Problemas:} 
+
+\hspace{0.3cm}\textbf{Problemas:}
 Si careciera de esto básico, entonces estarían en peligro todos los datos almacenados estando expuestos a modificaciones o eliminaciones por parte de cualquier persona/usuario que tuviera conexión a la Base de Datos.
 
 \textbf{Recuperación;}
@@ -193,7 +197,7 @@ Si no existiera está función de recuperación, es posible que cuando se presen
 La \textbf{redundancia de datos} sucede cuando se almacena multiples veces un mismo dato en una Base de Datos, en varias ubicaciones o tablas.\\
 Existen dos tipos de redundancia: la Redundancia Intencional (\textbf{Controlada}) y la Redundancia Involuntaria (\textbf{No Controlada}).\\
 \textbf{Redundancia Controlada:} Sucede cuando la redundancia de datos es hecho con planificación previa, es planificada para poder sacarle provecho bajo una situacion controlada, puede mejorar el rendimiento en algunas ocasiones.
- 
+
  \hspace{0.3cm}\textbf{Ejemplo:} Puede ser el caso en que un mismo dato este almacenado en distintas lugares (tablas, servidores) lo cual podra garantizar su disponibilidad  en el caso en que uno de los servidores fallé, y también protegerlo de pérdidas de datos.
 
 \textbf{Redundancia No Controlada:} Ocurre cuando la redundacia es producto de una mala organizacion o un mal diseño en la Base de Datos, la duplicidad de un dato no fue deseado o planeado y puede generar ineficiencia en el almacenamiento.
@@ -213,11 +217,94 @@ Existen dos tipos de redundancia: la Redundancia Intencional (\textbf{Controlada
 \item A lo largo del tiempo han existido diversos \textit{modelos de datos}, como el modelo jer\'arquico, el modelo de red, el modelo relacional, el modelo orientado a objetos y los modelos NoSQL (llave--valor, documento, columnares, grafos). Responde lo siguiente:
 \begin{itemize}
   \item Elabora una \textbf{tabla comparativa} entre al menos cuatro modelos de datos, destacando sus principales caracter\'isticas, ventajas, desventajas y casos de uso t\'ipicos.
-  \item ¿Por qu\'e crees que el modelo relacional se convirti\'o en el m\'as ampliamente adoptado durante d\'ecadas?
+
+  \begin{longtable}{|p{2.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}|}
+        \hline
+        \textbf{Modelo} & \textbf{Características} & \textbf{Ventajas} & \textbf{Desventajas} & \textbf{Usos} \\
+        \hline
+        \endfirsthead
+
+        \hline
+        \textbf{Modelo} & \textbf{Características} & \textbf{Ventajas} & \textbf{Desventajas} & \textbf{Usos} \\
+        \hline
+        \endhead
+
+        \hline
+        \endfoot
+
+        \hline
+        \endlastfoot
+
+        Jerárquico & En este modelo, los datos están organizados en una estructura de árbol. Los datos están almacenados como registros, los cuáles pueden ser una colección de uno o más campos, que son atómicos. Se tiene un tipo especial de registro, que es el enlace, que conecta registros. & Es muy fácil modelar relaciones uno a muchos; en este caso, un solo nodo padre puede tener muchos hijos pero no al revés. El acceso a los datos es rápido en consultas sencillas. & Los nodos hermanos no pueden estar relacionados. No es posible modelar relaciones muchos a muchos. Datos no homogéneos en el mismo nivel del árbol. & Ideal para modelar instituciones y departamentos con una jerarquía muy fuerte. Se pueden usar para modelar sistemas de archivos. \\
+        \hline
+
+        Relacional & Está basado en la lógica de primer orden y todos los datos están representados como tuplas agrupadas en relaciones. Una relación consiste en encabezado y cuerpo. El encabezado define un conjunto de atributos y el cuerpo es un conjunto de tuplas que tienen la misma aridad que el encabezado. Se utilizan llaves para identificar a cada tupla y las llaves foráneas para referenciar tuplas en otras relaciones. & La mayoría de bases de datos relacionales usan SQL, el lenguaje más común y fácil de encontrar expertos y es cómodo para la manipulación de datos. Pueden modelar relaciones muchos a muchos gracias al uso de llaves foráneas. & Su implementación enfrenta complicación al ser escalable horizontalmente (tener una BD distribuida). No es una gran opción para almacenar y manipular datos no estructurados. & Muy populares para implementar sistemas de nómina, inventarios, estudiantiles y bancarios. \\
+        \hline
+
+        Orientado a Objetos & Los datos constituyen objetos que tienen la posibilidad de implementar herencia, además de que los objetos tienen definidas operaciones sobre sí mismos y los atributos pueden ser complejos. & Se pueden guardar datos complejos como estructuras de datos. Gracias a la herencia, es posible la reutilización de código. & Debido a su gran cantidad de relaciones (herencia, composición, polimorfismo) se puede volver más engorroso de diseñar. No hay un estándar universal para modelarlo. & Según el Stanford Linear Accelerator (SLAC) y Herde y Sibbald (1992), los modelos de datos orientados a objetos han sido utilizados en física de alta energía y en biología molecular. \\
+        \hline
+
+        Llave-Valor & Se trata de una estructura de datos: el diccionario. Los datos se guardan en registros los cuáles pueden tener varios campos que contienen los datos. Estos registros son guardados y accesados a través de una llave única que lo identifica. & No se necesita tener un sistema de tablas o de información predefinido. Es muy flexible. En la implementación, debido a lo anterior, se ahorra espacio cuando se presentan casos de missing values. & No está pensado para modelar ningún tipo de relación entre los registros. No se asegura de la integridad de los datos. Carece de estandarización. & Según Redis (2024), debido a su acceso a memoria, es ideal para manejar sistemas en los que se hacen muchas inserciones de datos pequeños y consultas. Un ejemplo de esto es el almacenamiento de preferencias de usuario y de anuncios. \\
+        \hline
+
+\end{longtable}
+
+  \item ¿Por qu\'e crees que el modelo relacional se convirti\'o en el m\'as ampliamente adoptado durante d\'ecadas?\\
+    Aunque según Google Cloud, fue descrito por primera vez por Edgar F. Codd en los 70's, este fue ganando popularidad frente al modelo jerárquico durante la siguiente década, probablemente porque este podía modelar relaciones muchos a muchos de mejor manera que el jerárquico. Además de que debido a su estructura, la obtención de datos en este modelo es relativamente sencilla; con SQL como lenguaje, el administrador no se preocupa de conocer los mejores algoritmos de búsqueda ni de la representación interna de los datos, solo tiene que pedirla de acuerdo a cómo estableció su modelo.
+    Aunado a esto, su sustento matemático basado en la lógica de predicados
+    contribuyó a que en esa época en la que las ciencias de la computación cobraban cada vez más importancia a nivel global y cada vez había más gente dedicada a este campo; muchas personas adoptaran este modelo como su predilecto para manejar información.
+    Sumado a esto, desafíos y limitaciones que enfrentan hoy en día como su poca escalabilidad horizontal, no representaron un problema por muchos años.
+    En comparación con la actualidad, los volúmenes de datos generados y guardados eran mucho menores, por lo que la mayoría de estos podían almacenarse en un solo servidor y no existía la necesidad de distribuir una base de datos. Esto contribuyó a que el modelo relacional se mantuviera vigente durante muchos años y siga siendo ampliamente utilizado en la actualidad.
+
   \item ¿En qu\'e contextos actuales, los modelos NoSQL superan al modelo relacional en eficiencia o flexibilidad? Justifica con ejemplos.
+  eficiencia o flexibilidad? Justifica con ejemplos.\\
+    Me parece que efectivamente algunos modelos NoSQL superan al modelo relacional en cuanto en flexibilidad, pero no necesariamente lo superan en eficiencia.
+    En el modelo relacional, se predefinen las estructuras que tendrán las tablas, por lo que se espera que un registro no tenga missing values y se espera que una tupla cumpla con la estructura de la tabla los atributos adicionales no pueden almacenarse sin modificar el esquema.
+    Además de que al haber missing values, hay un desperdicio de memoria.
+    En cambio, con un modelo llave-valor, no se predefine la estructura que tendrán los registros. Esto permite que un registro en específico pueda tener missing values sin desperdiciar memoria o añadir campos especiales.
+
+    Ejemplo: Supongamos que queremos guardar clientes finales de una tienda con su información básica, como nombre completo y número de teléfono.
+    La ventaja del modelo llave valor es que si un cliente no nos proporciona su número telefónico, simplemente se añade un registro que no contenga el campo teléfono y de esta manera no se desperdicia memoria.
+    Por otro lado, si tiempo después de haber creado la base de datos, empiezan a comprar nuevos clientes que pagan por transferencia bancaria, podríamos guardar la información de estos nuevos clientes más el campo cuenta bancaria, esto se realizaría sin afectar la estructura de los registros de los demás clientes.
+
+    En cuanto a eficiencia, si bien es cierto que los modelos llave-valor se especializan por ser un diccionario en el cuál podemos verificar la existencia y acceder en tiempo constante a los registros, este modelo en particular falla en facilitar las relaciones entre registros y en lo que en el modelo relacional serían tablas, ya que si bien es posible implementar relaciones en el modelo llave-valor de forma manual, el hecho de que sea de esta manera, hace que su implementación sea engorrosa y más tardada de lo que sería en el modelo relacional. Por lo que el modelo relacional es más eficiente al recuperar información que está relacionada en diferentes tablas.
+
+    Ejemplo: Si queremos guardar la película favorita de cada persona usando el número de boleto como identificación, un modelo key-value es especialmente útil porque podemos manejar grandes cantidades de datos pequeños y acceder rápidamente a cada registro por su clave.
+    En cambio, si nos interesa guardar en una base de datos los cines, los clientes de cada cine, la película que vieron, en qué día y horario, las cosas que compraron en dulcería y queremos saber cuál es el artículo de dulcería más consumido por la gente que va a ver películas de superhéroes en verano, el modelo relacional es más eficiente para recuperar esta información porque permite consultar relaciones complejas entre tablas.
+
+    Así que si bien algunos modelos noSQL pueden ser más eficientes y flexibles que el modelo relacional en ciertos casos, esto no es algo que compense siempre. A veces, la flexibilidad puede costar eficiencia.
+    Por otro lado, la elección del modelo a usarse depende más del tipo de problema que se quiera atacar, cómo se quiera atacar y qué tanto creemos que sea necesario escalar o modificar nuestro modelo.
+
 \end{itemize}
 
-\item Sup\'on que deseas crear una aplicaci\'on para \textit{gesti\'on hospitalaria}. Considera cada una de las desventajas indicadas en el documento \textit{``Purpose of Database Systems''}, cuando se administran los datos en un sistema de archivos. Discute la relevancia de cada uno de los puntos indicados con respecto a la gesti\'on de datos de pacientes: historial m\'edico, diagn\'osticos, tratamientos, citas, acceso a registros m\'edicos, m\'edicos, especialidades, entre otros.
+\item Sup\'on que deseas crear una aplicaci\'on para \textit{gesti\'on hospitalaria}. Considera cada una de las desventajas indicadas en el documento \textit{``Purpose of Database Systems''}, cuando se administran los datos en un sistema de archivos. Discute la relevancia de cada uno de los puntos indicados con respecto a la gesti\'on de datos de pacientes: historial m\'edico, diagn\'osticos, tratamientos, citas, acceso a registros m\'edicos, m\'edicos, especialidades, entre otros.\\
+
+    \textbf{Redundancia de datos e inconsistencia:}
+    Si suponemos que cada médico tiene una lista de pacientes que ha atendido históricamente, sabemos que por ejemplo, un paciente pudo haber sido atendido por un médico general, o por un otorrinolaringólogo Es decir, atendido por más de uno.
+    Entonces, los datos de un paciente podrían aparecer en muchas listas de distintos médicos. Esta situación genera redundancia de datos. Y la inconsistencia se ve reflejada en que si un paciente cambia de número de teléfono, si los programas para manejar los archivos están mal implementados, el cambio solo se realiza en la lista del primer médico que el programa encontró, pero no en la de los demás. O que sí se haga en todos los médicos pero no en el de las citas.
+
+    \textbf{Dificultad para obtener datos:}
+    Esta desventaja hace énfasis en que filtrar los datos según determinados criterios requiere de programas específicos que hagan cada una de las tareas.
+    En el caso del paciente, puede ser que se necesite obtener el historial médico de todos los pacientes que han sido atendidos por un médico en específico en un periodo determinado. En caso de que no haya sido programado ningún filtro, se tendría que hacerlo, y dependiendo la urgencia de esos datos, solo se programaría para este caso en específico. En caso de necesitar otro filtro complejo, se tendría que volver a programar. O también puede suceder que se añada al sistema archivos dedicados a seguros médicos (sería otra tabla en el modelo relacional) y entonces, se tendría que extender de nuevo el programa de búsqueda para que pueda obtener datos que tengan que ver con los seguros.
+
+    \textbf{Aislamiento de datos:}
+    Si se necesitan obtener a cuántos pacientes se les recetó paracetamol para saber la disponibilidad de estos mismos en la farmacia, pero en los archivos de inventario estos no están registrados como paracetamol, si no como Advil\_Paracetamol o solo el nombre comercial, la inconsistencia e incomunicación de los datos provoca que esta tarea falle. Por lo que es un problema generado por el aislamiento de datos que evita que los departamentos se integren de manera eficiente.
+
+
+    \textbf{Problemas de integridad:}
+    Si la clínica cierra a la 8pm y tiene un departamento de rayos X, pero se ha comprado nuevo equipo, por lo que la instalación tardará por lo menos dos semanas, será necesario que el programa encargado de gestionar los datos valide que no se agenden citas que se lleven a cabo durante ese periodo.
+    Esta restricción probablemente necesitaría aplicar nuevos filtros y modificar el código que se encarga de crear y gestionar las citas.
+    Si este tipo de cambios se hacen frecuentes, el sistema sería constantemente modificado, lo que además de que puede generar errores, es costoso.
+
+    \textbf{Problemas de atomicidad:}
+    Supongamos que un médico se cambia de departamento. Se hizo la modificación en el archivo del departamento, pero no sé logró generar el código pertinente para que el médico pueda acceder a ciertas salas porque se fue la luz. Gracias a esta falta de datos, el médico no obtuvo su contraseña y no aparecerá en el sistema.
+
+    \textbf{Anomalías en acceso concurrente:}
+    Si en el sistema de salas de un hospital hay una camilla libre y dos administradores asignen a un paciente cada uno a la misma camilla, en el sistema de archivos, aparecerá que la camilla está siendo ocupada por dos personas, sin embargo debido a que los dos administradores hicieron su modificación al mismo tiempo, el sistema no logró advertir este error y ahora a alguno de los pacientes se le tendrá que reasignar una camilla si es que hay disponibles.
+
+    \textbf{Problemas de seguridad:}
+    Si no se ponen los permisos correspondientes, la persona dedicada a agendar citas, puede tener acceso al sistema de nómina del hospital y revelar cuánto es que gana cierto médico. Lo cuál puede generar disputas dentro del personal.
+
 \end{enumerate}
 \newpage
 \item \textbf{Lectura de art\'iculo}
@@ -235,7 +322,7 @@ Existen dos tipos de redundancia: la Redundancia Intencional (\textbf{Controlada
 
 En este artículo se analiza cómo la cuarta revolución industrial afecto el mundo como lo conocíamos, impulsada por la tecnología digital, las redes sociales y los dispositivos conectados. Por ello ha transformado nuestra manera de interactuar con el mundo y ha convertido la información personal en un recurso altamente valioso. Y debido a esto las empresas tecnológicas aprovecharon y aprovechan los datos generados por los usuarios para obtener ventajas competitivas, monetizando la información y transformando nuestra identidad digital en un activo económico.
 
-Ademas, muchas veces los usuarios, desconocen qué datos están compartiendo y con quien lo comparten. Este intercambio constante de información a cambio de servicios gratuitos pone en riesgo la privacidad y la confianza en el mercado digital. 
+Ademas, muchas veces los usuarios, desconocen qué datos están compartiendo y con quien lo comparten. Este intercambio constante de información a cambio de servicios gratuitos pone en riesgo la privacidad y la confianza en el mercado digital.
 Por ello nuestra identidad se redefine por nuestro valor en información digital. Por ejemplo, los servicios de redes sociales, como Facebook y Google, no venden productos a los usuarios, sino que los mismos usuarios son activos para anunciantes, transformando nuestra información, ideas y hábitos en mercancía.
 
 Ya que nosotros como usuarios no comprendemos el uso que se le puede dar a nuestros datos en aquel mercado digital y por ello nuestra privacidad, la propiedad de la información y los derechos humanos se ven comprometidos, y surge la pregunta de cómo medir la confianza y el valor de nuestros datos si no somos conscientes de su importancia en la economía digital.
@@ -283,7 +370,7 @@ Ya que nosotros como usuarios no comprendemos el uso que se le puede dar a nuest
 \end{itemize}
 \newpage
 \textbf{Ensayo\\
-        Autor: Aar\'on L\'opez Mendoza}   
+        Autor: Aar\'on L\'opez Mendoza}
 
 
 En la actualidad gracias al Big Data y el Internet de las Cosas (IoT) nos dan cosas increíbles, como servicios súper personalizados y maneras más fáciles de hacer trámites, sin embargo también es verdad que hay un lado oscuro que no podemos ignorar.\\
@@ -308,8 +395,40 @@ En mi opinión, es necesario que más personas, por cuenta propia, sean concient
 
 Notemos como todo lo abordado en el artículo acerca del \textbf{Big Data} y \textbf{IoT} implica que se haga el uso de las Bases de Datos puesto que son capaces de poder almacenar grande volúmenes de datos y ofrecen una velocidad y eficiencia la cual siempre sera requerida para poder manejar grandes cantidades de datos y poder ser convertidos en información valiosa para mulitples objetivos para las empresas, no podría ser posible si se usaran otros servicios como lo puede ser Excel puesto que tienen sus limitante, por eso hace sentido contar las características de una Base de Datos y su seguridad e integridad que pueden llegar a ofrecer. \\
 
-Para terminar, quiero comentar que los datos que siempre publiquemos o publiquemos en servicios web o de internet siempre tendran valor de alguna u otra manera y será importante que cada persona sea conciente de esto. Debemos saber en que lugares compartimos nuestra huella digital y que cada uno deberiamos tener un control sobre los mismos. A partir de este artículo pude conocer el valor significante que pueden tomar mis datos para algunas empresas y el como pueden formar parte del Big Data y IoT que son conceptos nuevos para mi. Personalmente no soy alguien que publique muchas cosas o dé información de mi vida en redes sociales, pero puedo ver lo mucho que pueden influir dichos datos. Creo que a futuro, esté es un tema que seguira dando de que hablar, con el tiempo las organizaciones y leyes establecidas equilibrarán la balanza entre usuario y compáñias con respecto a los datos, sobre todo para los usuarios puesto que tendran control de sus datos y también de su vida digital, para que finalmente los usuarios puedan ser dueños de sus propios datos. 
+Para terminar, quiero comentar que los datos que siempre publiquemos o publiquemos en servicios web o de internet siempre tendran valor de alguna u otra manera y será importante que cada persona sea conciente de esto. Debemos saber en que lugares compartimos nuestra huella digital y que cada uno deberiamos tener un control sobre los mismos. A partir de este artículo pude conocer el valor significante que pueden tomar mis datos para algunas empresas y el como pueden formar parte del Big Data y IoT que son conceptos nuevos para mi. Personalmente no soy alguien que publique muchas cosas o dé información de mi vida en redes sociales, pero puedo ver lo mucho que pueden influir dichos datos. Creo que a futuro, esté es un tema que seguira dando de que hablar, con el tiempo las organizaciones y leyes establecidas equilibrarán la balanza entre usuario y compáñias con respecto a los datos, sobre todo para los usuarios puesto que tendran control de sus datos y también de su vida digital, para que finalmente los usuarios puedan ser dueños de sus propios datos.
 \end{enumerate}
+
+\newpage
+\textbf{Ensayo sobre The value of our personal data in
+the Big Data and the Internet
+of all Things Era}\\
+\textit{Por Rodrigo Zaldivar Alanis}\\
+
+En este documento, la autora indaga y hace énfasis en la importancia de nuestros datos, ya que estos son utilizados como un medio para generar riqueza por las empresas a través del Big Data. Además pone sobre la mesa la inquietud de que nosotros como seres humanos, hemos pasados a ser vistos como unos y ceros por estas empresas; además de que el valor de nuestros datos es tal, que las corporaciones llegan al punto de violar nuestra privacidad y exponer nuestros datos; esto ha provocado que los usuarios vean con desconfianza el mercado de datos. Lo cuál nos lleva a la siguiente pregunta: ¿Cómo podemos confiar en el uso correcto de nuestra información, si no sabemos qué información tienen ellos y más aún, cuánto vale?\\
+
+En el documento se plantea que nosotros, visto desde un punto de vista, tenemos acceso gratis a internet y a muchos otros servicios a través de éste, porque nosotros pagamos con nuestros datos, los cuáles procesan y venden a publicistas; lo que desencadena en una desigualdad de poder entre las instituciones y los individuos.
+
+También menciona que nosotros como consumidores de redes sociales, hemos sido condicionados y que nuestros datos son el precio a pagar para evitar la exclusión social. Estoy parcialmente en desacuerdo en este punto, ya que si bien los bienes y servicios tecnológicos facilitan el trabajo, la comunicación, se marcan tendencias y básicamente en muchas vidas modernas, estos forman un aspecto muy importante de nuestras vidas, me parece que decir que uno es socialmente excluido por no consumir  es una exageración, como dije antes, estos son solo herramientas para nosotros. Su falta de uso entorpece la comunicación, el trabajo y la eficiencia, pero todavía queda la vida real allá afuera para hacer conexiones.
+
+Tiene razón en cierta forma, al afirmar que el consumo de estos servicios es tan común que la falta uso de alguno de estos podría ser la razón por la cuál uno es despedido, no contratado o pasa por alto eventos de interés.
+
+Sobre la misma línea, ahonda en el internet de las cosas, que de acuerdo con la ITU (International Communication Union), se trata de una infraestructura global de la sociedad de la información que promueve la interconectividad de los diferentes dispositivos electrónicos, como: relojes, refrigeradores, pantallas, celulares, así como el envío de los datos de los usuarios a través de internet. Como consecuencia lógica, los datos generados de esta manera son masivos, tanto así que no se pueden procesar de manera convencional y se les ha acuñado un término especial: Big Data, y se ha denominado como el nuevo petróleo. Se espera que como con el petróleo, se luche por el dominio de estos.
+
+Con el correcto análisis de estos datos, las compañías pueden idear campañas de publicidad personalizadas y con la capacidad de predecir tendencias.
+
+Sin embargo, el uso del internet de las cosas y su generación de Big Data no solo se enfoca en las campañas de publicidad, sino que también es usado para el transporte y  la creación de ciudades inteligentes. Nuestra generación de datos a través del internet de las cosas y su procesamiento, nos permite tener un estilo de vida más cómodo, como: encontrar la ruta menos transitada, eficientar las compras, tener calles más seguras; pero también mayor observación por parte de las empresas y el estado.
+
+Este es el gran dilema, la información que generamos y los resultados del procesamiento son muy útiles y hacen nuestra vida más sencilla, pero a cambio parece que la privacidad se convierte cada vez más en un ideal muy lejano.
+
+Por último: ¿Realmente sabemos cuánto vale nuestra información? Probablemente no. Los estudios mencionados en el artículo muestran una falta de concordancia respecto a cómo se evalúan los datos. Esto puede deberse a diferentes factores como los dos años de diferencia en los estudios, el país de prueba, el entorno socioeconómico de los participantes, su contexto cultural. Pero la verdad es que no hay un consenso.
+
+Uno de los estudios mostró que los datos financieros son los más preciados para una persona normal, mientras que para las grandes corporaciones, datos básicos de las personas pueden generar grandes ganancias. Esto se ve reforzado por la venta realizada por Shawn Buckles,  no se menciona la venta de datos financieros, si no la de preferencias y conversaciones. Obtuvo una suma relativamente grande, pero ahora quien sea que tenga sus datos, no solo tiene acceso a sus datos, tiene acceso conversaciones con muchas más personas, y todo un catálogo de preferencias, estos pueden ser utilizados para saber del comportamiento y elecciones de compra para todo un grupo de gente, es posible diseñar una campaña publicitaria extremadamente específica para su círculo,
+
+Es preocupante que muchas personas desconocen el valor de sus datos y probablemente esto es así, porque son ignorantes de los usos que se hacen con ellos de cómo se procesan y qué datos son los que más se recolectan,  porque los datos que valoran los individuos son distintos a los datos que valoran las empresas, esto está fuertemente influenciado por el contexto.\\
+
+Sin embargo, lo que menciona la autora me parece legítimo. Nuestros datos son el pago para acceder a herramientas muy poderosas que facilitan nuestra vida. En el día a día, en el entorno laboral, en muchos ambientes sociales, el uso de dispositivos con acceso al internet de las cosas, es algo común y no usarlos nos puede llevar a perder oportunidades de vida importantes.
+
+Lo mejor que podemos hacer como usuarios es estar conscientes del impacto de nuestros datos y cómo son usados, ser responsables con la información que compartimos en internet, pero saber que parece que el futuro de la sociedad va enfocado hacia el Big Data y probablemente no hay mucho que podamos hacer si estamos en desacuerdo, es imperativo que encontremos la forma de adaptarnos a esta nueva forma de vivir.
 
 \end{enumerate}
 
@@ -335,5 +454,14 @@ Para terminar, quiero comentar que los datos que siempre publiquemos o publiquem
 
     \bibitem{IONOS}
     SGBD: introducción al sistema gestor de base de datos. (2020, 12 mayo). IONOS Digital Guide. \url{https://www.ionos.mx/digitalguide/hosting/cuestiones-tecnicas/sistema-gestor-de-base-de-datos-sgbd/}
+
+    \bibitem{SLAC}
+    Barry, D. K. (s. f.). Stanford Linear Accelerator (SLAC). Service Architecture. \url{https://www.service-architecture.com/articles/object-oriented-databases/stanford-linear-}accelerator.html
+
+    \bibitem{Redis}
+    What is a Key-Value Database? - Redis. (2024, 6 febrero). Redis. \url{https://redis.io/nosql/key-value-databases/}
+
+    \bibitem{GCloud}
+    What is a relational database (RDBMS)? | Google Cloud. (s. f.). Google Cloud. \url{https://cloud.google.com/learn/what-is-a-relational-database}
 \end{thebibliography}
 \end{document}
