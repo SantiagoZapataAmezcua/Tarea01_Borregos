@@ -149,12 +149,12 @@ Por lo que para una empresa en crecimiento que busca centralizar operaciones de 
 \item Una empresa de log\'istica necesita adaptar su Sistema de Base de Datos para incluir nuevas funcionalidades, como el seguimiento en tiempo real de paquetes y una nueva categor\'ia de clientes corporativos. Antes de realizar estos cambios, el equipo de desarrollo debe considerar los niveles de independencia de los datos. Responde lo siguiente:
 \begin{itemize}
   \item ¿Qu\'e riesgos podr\'ian surgir s\'i no existe independencia l\'ogica entre el dise\~no conceptual y las aplicaciones que consumen los datos?\\
-  
+
         La independencia logica nos asegura el cambio en nuestro modelo de datos sin romper las aplicaciones, sin esta no existe:
         Los cambios pequeños rompen cosas por ejemplo el renombrar entidades o el separar direcciones en distintas columnas, las consultas y los reportes que usan estos nombres fallan.
         De igualmanera sin independencia logica implica actualizar cada microservicio para volver a dar relacion y sentido a la base de datos y en el mismo sentido las inconsitencias y la diversidad en las soluciones a dichos problemas se vuelven otro problema que resolver haciendo de la evolucion un proceso lento y lleno de parches y errores.\\
-        
-  
+
+
   \item ¿Qu\'e problemas operativos aparecer\'ian s\'i no se logra la independencia f\'isica, especialmente en t\'erminos de almacenamiento y rendimiento?\\
 
         Por otro lado la independencio fisica nos da la capacidad de optimizar como se guardan y ejecutan nuestros indices, particiones, discos... sin tocar las apps o esa parte intangible de nuestros sistemas. Sin ella las apps dependen de detalles "fisicos"
@@ -164,16 +164,16 @@ Por lo que para una empresa en crecimiento que busca centralizar operaciones de 
             \item Escalado y la migracion de nuestros datos se vuelven dificiles.\\
         \end{itemize}
 
-  
+
   \item Proporciona un ejemplo realista en el que un cambio f\'isico no afecte la l\'ogica del sistema, y otro donde un cambio l\'ogico pueda impactar m\'ultiples aplicaciones s\'i no se gestiona adecuadamente.\\
 
 
          \begin{itemize}
-         
+
              \item Cambio fisico que no afecta a la logica.
                Una empresa de logística guarda todos los registros de entregas en una tabla muy grande llamada entregas. Con el tiempo, esa tabla crece demasiado y las consultas se vuelven lentas. En este punto se busca mejorar el rendimiento, el administrador decide mover la tabla a un servidor más rápido con discos SSD y crear un índice en la columna $"fechae\_ntrega"$.
                 Para las aplicaciones dedicadas a las consultas de los datos, nada cambia: siguen haciendo preguntas como “dame todas las entregas de ayer” con el mismo comando SQL. Lo único que mejora es la velocidad y eficiencia. Es decir, por debajo cambia el almacenamiento, pero la lógica de cómo se consulta permanece igual.
-                
+
              \item Cambio logico con multiples implicaciones.
                 Tenemos una tabla clientes tiene un campo $tipo\_cliente$ con dos valores: “regular” y “premium”. La empresa ahora crea un nuevo segmento de clientes corporativos y decide cambiar la estructura de la tabla: elimina la columna $tipo\_cliente$ y crea una tabla nueva llamada $segmentos\_clientes$ con un catálogo más amplio.
                   Si no se llevan estos cambios con cuidado las aplicaciones que dependían de $tipo\_cliente$ dejarán de funcionar: reportes de ventas, facturación o hasta el sistema de seguimiento que valida beneficios de clientes especiales podrían fallar porque ya no encuentran la columna que usaban antes de los cambios.
@@ -250,17 +250,17 @@ Existen dos tipos de redundancia: la Redundancia Intencional (\textbf{Controlada
 \begin{itemize}
   \item ¿Cu\'ales son las principales responsabilidades del DBA en este contexto, considerando la necesidad de confidencialidad, trazabilidad y disponibilidad continua de la informaci\'on?\\
   - Las responsabilidades principales del DBA en este contexto son el diseño y la creación de la base de datos considerando todas las especificaciones que requiera la empresa para poder operar correctamente gestionando la información sobre las pólizas, los clientes, siniestros
-  evaluaciones de riesgo el cumplimiento normativo, el mantenimiento de la misma, la optimización para asegurar que siga funcionando correctamente y que mejore el rendimiento aumentando la rapidez y eficiencia en el acceso a la información, así permite la disponibilidad continua de la información, además 
-  debe de implementar medidas de seguridad como el control de accesos para que solo las personas autorizadas puedan entrar o modificar la información configurando los permisos y encriptando datos sensibles, garantizando así la confidencialidad de los datos, y por supuesto el DBA debe de gestionar las 
+  evaluaciones de riesgo el cumplimiento normativo, el mantenimiento de la misma, la optimización para asegurar que siga funcionando correctamente y que mejore el rendimiento aumentando la rapidez y eficiencia en el acceso a la información, así permite la disponibilidad continua de la información, además
+  debe de implementar medidas de seguridad como el control de accesos para que solo las personas autorizadas puedan entrar o modificar la información configurando los permisos y encriptando datos sensibles, garantizando así la confidencialidad de los datos, y por supuesto el DBA debe de gestionar las
   copias de seguridad regulares de los datos y debe tener un plan para la recuperación de datos en caso de algún percance lo que asegura la trazabilidad de la información.
   \item ¿Qu\'e habilidades t\'ecnicas y conocimientos espec\'ificos (por ejemplo, manejo de datos sensibles, normativas como protecci\'on de datos personales, respaldo y recuperaci\'on ante desastres) son m\'as cr\'iticos para este entorno?\\
   - Algunas de las habilidades técnicas son: El DBA debe de dominar un Sistema Manejador de Bases de Datos o varios como Oracle, PostgreSQL, MySQL, entre otros, debe de tener conocimientos en lenguajes como SQL, además necesita saber como darle seguridad a la base de datos y protegerla de amenazas externas o internas,
-  saber implementar incriptación de datos sensibles y control de accesos, debe tener el conocimiento de estrategias de respaldo y recuperación de datos ante la posibilidad de algún desastre, además necesita tener la habilidad de resolver problemas constantemente, comunicarse efectivamente con los demás compañeros para un mejor trabajo, por otro 
-  lado un DBA debe tener conocimientos de lo que esta trabajando en este caso conocimientos acerca de las aseguradoras y como es que estas operann para poder facilitar su trabajo, además conocer las reglas de la empresa y muy importante que conozca las leyes, normas y regulaciones que hay en el país en el que se esta trabajando acerca de la 
+  saber implementar incriptación de datos sensibles y control de accesos, debe tener el conocimiento de estrategias de respaldo y recuperación de datos ante la posibilidad de algún desastre, además necesita tener la habilidad de resolver problemas constantemente, comunicarse efectivamente con los demás compañeros para un mejor trabajo, por otro
+  lado un DBA debe tener conocimientos de lo que esta trabajando en este caso conocimientos acerca de las aseguradoras y como es que estas operann para poder facilitar su trabajo, además conocer las reglas de la empresa y muy importante que conozca las leyes, normas y regulaciones que hay en el país en el que se esta trabajando acerca de la
   protección de datos personales, privacidad y confidencialidad para no caer en una falta administrativa en empresa o incluso en un delito.
   \item Si el DBA no ejecuta consultas directamente, ¿por qu\'e sigue siendo necesario que comprenda el modelo l\'ogico de la base de datos? Justifica tu respuesta considerando la importancia de la integridad de los datos en procesos como la evaluaci\'on de riesgos o la detecci\'on de fraudes.\\
-  - El DBA necesita comprender el modelo lógico de la base de datos, en primera por que ayuda a comprender como se estructuran los datos y permite entender cómo se relacionan estos entre si, además le da un conocimiento profundo de la base de datos para poder hacer el mantenimiento y la optimización de la misma, facilita ver si la base de datos 
-  cumple con los requisitos de la empresa, y por supuesto le permite conocer las restricciones de integridad que deben cumplirse para asegurar consistencia y precisión en los datos, lo cual ayuda en gran manera en procesos como la evaluación de riesgos o la detección de fraudes, ya que si los datos no son precisos y confiables, los análisis y decisiones que se tomen en base a estos 
+  - El DBA necesita comprender el modelo lógico de la base de datos, en primera por que ayuda a comprender como se estructuran los datos y permite entender cómo se relacionan estos entre si, además le da un conocimiento profundo de la base de datos para poder hacer el mantenimiento y la optimización de la misma, facilita ver si la base de datos
+  cumple con los requisitos de la empresa, y por supuesto le permite conocer las restricciones de integridad que deben cumplirse para asegurar consistencia y precisión en los datos, lo cual ayuda en gran manera en procesos como la evaluación de riesgos o la detección de fraudes, ya que si los datos no son precisos y confiables, los análisis y decisiones que se tomen en base a estos
   datos pueden ser engañosos, o llevar a que la empresa tenga pérdidas importantes.
 \end{itemize}
 
@@ -306,8 +306,7 @@ Existen dos tipos de redundancia: la Redundancia Intencional (\textbf{Controlada
     Sumado a esto, desafíos y limitaciones que enfrentan hoy en día como su poca escalabilidad horizontal, no representaron un problema por muchos años.
     En comparación con la actualidad, los volúmenes de datos generados y guardados eran mucho menores, por lo que la mayoría de estos podían almacenarse en un solo servidor y no existía la necesidad de distribuir una base de datos. Esto contribuyó a que el modelo relacional se mantuviera vigente durante muchos años y siga siendo ampliamente utilizado en la actualidad.
 
-  \item ¿En qu\'e contextos actuales, los modelos NoSQL superan al modelo relacional en eficiencia o flexibilidad? Justifica con ejemplos.
-  eficiencia o flexibilidad? Justifica con ejemplos.\\
+  \item ¿En qu\'e contextos actuales, los modelos NoSQL superan al modelo relacional en eficiencia o flexibilidad? Justifica con ejemplos.\\
     Me parece que efectivamente algunos modelos NoSQL superan al modelo relacional en cuanto en flexibilidad, pero no necesariamente lo superan en eficiencia.
     En el modelo relacional, se predefinen las estructuras que tendrán las tablas, por lo que se espera que un registro no tenga missing values y se espera que una tupla cumpla con la estructura de la tabla los atributos adicionales no pueden almacenarse sin modificar el esquema.
     Además de que al haber missing values, hay un desperdicio de memoria.
@@ -370,7 +369,7 @@ Existen dos tipos de redundancia: la Redundancia Intencional (\textbf{Controlada
 
 \textbf{Resumen}
 
-%-----parte aron 
+%-----parte aron
 En este artículo se analiza cómo la cuarta revolución industrial afecto el mundo como lo conocíamos, impulsada por la tecnología digital, las redes sociales y los dispositivos conectados. Por ello ha transformado nuestra manera de interactuar con el mundo y ha convertido la información personal en un recurso altamente valioso. Y debido a esto las empresas tecnológicas aprovecharon y aprovechan los datos generados por los usuarios para obtener ventajas competitivas, monetizando la información y transformando nuestra identidad digital en un activo económico.
 
 Ademas, muchas veces los usuarios, desconocen qué datos están compartiendo y con quien lo comparten. Este intercambio constante de información a cambio de servicios gratuitos pone en riesgo la privacidad y la confianza en el mercado digital.
@@ -380,7 +379,7 @@ Ya que nosotros como usuarios no comprendemos el uso que se le puede dar a nuest
 
 Se nos hace introducción de conceptos relativamente nuevos como lo es Big Data, que en resumen se puede definir como el conjunto de datos en masa que actualmente son difíciles de procesar; por otra parte, existe también el IoT (Internet de las Cosas), el cual se nos menciona como una red global constituida por dispositivos físicos conectados mediante internet y que son capaces de generar y enviar información. Incluso se habla de cómo nuestros datos personales pueden llegar a compararse con el nuevo petróleo y de cómo tecnologías como Big Data y IoT toman su valor dentro del mercado por la gran cantidad de volúmenes de datos que se manejan, los cuales podrían permitir predecir comportamientos, mejorar y crear nuevos modelos o servicios de un negocio, aunque esto no quiere decir que sea fácil contar con acceso a estos datos, pues se sabe que gran parte de ellos están bajo control de empresas de telecomunicaciones e internet.\\
 
-%----parte Santiago págs. 76 y 77 
+%----parte Santiago págs. 76 y 77
 Igualmente, en esta última parte del texto se analiza la importancia de la protección de datos personales en el contexto del crecimiento del Big Data y el Internet de las Cosas, y cómo iniciativas como la del proyecto "Hub of All Things" buscan regresar al usuario el control sobre su propia información, operando como una plataforma digital donde los datos recolectados de las distintas formas en el día a día del usuario son almacenados y gestionados por los propios usuarios, quienes tienen las decisiones sobre con quién se comparten sus datos y para qué.
 
 En este sentido, también se habla de la intervención de la Unión Europea y su postura ante esta situación, enfatizando que la confianza de los usuarios es esencial para el desarrollo económico y ha establecido el Reglamento General de Protección de Datos (GDPR) como un marco regulatorio único que regula el tratamiento de datos personales. Ello tomando en cuenta que los datos personales se han convertido en un activo económico.
@@ -444,7 +443,7 @@ En este sentido, es clave entender que los datos personales funcionan como activ
 
 En conclusión, es importante reafirmar que para la plena justicia en esta era digital es vital el equilibrio en el control y acceso a la información, sobre todo evitando dejar caer todos los recursos sobre las empresas, como sucede hoy en día, pues ello solo alargará más la brecha de injusticia en el poder de la información. El aprendizaje más valioso que transmite la lectura es que es indispensable empoderar a los individuos a través de iniciativas gubernamentales, educativas y empresariales para retomar el acceso al control y manejo de su información. Y si bien el tema abre horizontes a nuevos retos a futuro sobre cómo equilibrar innovación y derechos fundamentales, cómo garantizar justicia en el uso de las nuevas ciencias y tecnologías y, sobre todo, cómo construir una cultura digital más consciente y activa sobre uno de los activos más importantes en la economía contemporánea: la información.
 
-        
+
 
 \newpage
 \textbf{Ensayo\\
@@ -473,10 +472,7 @@ En mi opinión, es necesario que más personas, por cuenta propia, sean concient
 
 Notemos como todo lo abordado en el artículo acerca del \textbf{Big Data} y \textbf{IoT} implica que se haga el uso de las Bases de Datos puesto que son capaces de poder almacenar grande volúmenes de datos y ofrecen una velocidad y eficiencia la cual siempre sera requerida para poder manejar grandes cantidades de datos y poder ser convertidos en información valiosa para mulitples objetivos para las empresas, no podría ser posible si se usaran otros servicios como lo puede ser Excel puesto que tienen sus limitante, por eso hace sentido contar las características de una Base de Datos y su seguridad e integridad que pueden llegar a ofrecer. \\
 
-<<<<<<< HEAD
 Para terminar, quiero comentar que los datos que siempre publiquemos o publiquemos en servicios web o de internet siempre tendran valor de alguna u otra manera y será importante que cada persona sea conciente de esto. Debemos saber en que lugares compartimos nuestra huella digital y que cada uno deberiamos tener un control sobre los mismos. A partir de este artículo pude conocer el valor significante que pueden tomar mis datos para algunas empresas y el como pueden formar parte del Big Data y IoT que son conceptos nuevos para mi. Personalmente no soy alguien que publique muchas cosas o dé información de mi vida en redes sociales, pero puedo ver lo mucho que pueden influir dichos datos. Creo que a futuro, esté es un tema que seguira dando de que hablar, con el tiempo las organizaciones y leyes establecidas equilibrarán la balanza entre usuario y compáñias con respecto a los datos, sobre todo para los usuarios puesto que tendran control de sus datos y también de su vida digital, para que finalmente los usuarios puedan ser dueños de sus propios datos.
-=======
-Para terminar, quiero comentar que los datos que siempre publiquemos o publiquemos en servicios web o de internet siempre tendran valor de alguna u otra manera y será importante que cada persona sea conciente de esto. Debemos saber en que lugares compartimos nuestra huella digital y que cada uno deberiamos tener un control sobre los mismos. A partir de este artículo pude conocer el valor significante que pueden tomar mis datos para algunas empresas y el como pueden formar parte del Big Data y IoT que son conceptos nuevos para mi. Personalmente no soy alguien que publique muchas cosas o dé información de mi vida en redes sociales, pero puedo ver lo mucho que pueden influir dichos datos. Creo que a futuro, esté es un tema que seguira dando de que hablar, con el tiempo las organizaciones y leyes establecidas equilibrarán la balanza entre usuario y compáñias con respecto a los datos, sobre todo para los usuarios puesto que tendran control de sus datos y también de su vida digital, para que finalmente los usuarios puedan ser dueños de sus propios datos. 
 
 \newpage
 \textbf{Ensayo\\
@@ -493,7 +489,6 @@ En lo personal estoy de acuerdo con que la falta de conocimiento de nosotros los
 La temática central del artículo es el valor económico y social de los datos personales en la era digital y como subtemas algunos como la privacidad y las nuevas tecnologías como el Big Data y IoT.\\
 
 En conclusión solo me queda reafirmar que es de suma importancia saber que cosas son las que compartimos en internet y que datos pueden obtener de manera consensuada y estar alerta de las cosas que obtienen las empresas sin nuestro consentimiento, además del valor que nuestros datos personales pueden llegar a tener, aunque si bien es cierto que no puedes esperar que algo que usas mucho no te cueste nada porque también las compañías tienen que conseguir algo a cambio que los beneficie para poder brindarte estos servicios, así que tal vez no esta del todo mal que obtengan datos nuestros pero se pide más claridad, transparencia y seguridad de las acciones sobre nuestros datos, ya que sin seguridad podemos vernos gravemente afectados por un mal uso de estos. Yo considero muy valioso el que nos muestra la urgencia de crear herramientas y políticas que permitan a las personas entender y gestionar el valor de sus datos y aprendí a cuestionar más el uso que le damos a internet y la información con la que terminamos pagando, por lo tanto esto nos deja retos futuros de implementar regulaciones efectivas y ayudar con la seguridad para los datos de las personas.
->>>>>>> 13ed3dc546784fd97277c79e39de297932b6c11f
 \end{enumerate}
 
 \newpage
@@ -546,20 +541,22 @@ Lo mejor que podemos hacer como usuarios es estar conscientes del impacto de nue
 
     \bibitem{IBM}
     IBM. (n.d.). Database management systems (DBMSs). \url{https://www.ibm.com/think/topics/database}
-    
+
     \bibitem{IBM}
     Krantz, T., Jonker, A. (2025, 7 febrero). Redundancia de datos. IBM. \url{https://www.ibm.com/mx-es/think/topics/data-redundancy}
 
     \bibitem{DB book}
     Silberschatz, A., Korth, H. F., \& Sudarshan, S. (2019). Database system concepts (7.ª ed.). McGraw-Hill. \url{https://www.db-book.com/}
-    
+
     \bibitem{celerdata}
     CelerData. (2024, 5 octubre). Data Redundancy: What It Is and How to Manage It. CelerData. \url{https://celerdata.com/glossary/data-redundancy}
 
     \bibitem{IONOS}
     SGBD: introducción al sistema gestor de base de datos. (2020, 12 mayo). IONOS Digital Guide. \url{https://www.ionos.mx/digitalguide/hosting/cuestiones-tecnicas/sistema-gestor-de-base-de-datos-sgbd/}
 
-<<<<<<< HEAD
+    \bibitem{KeepCoding}
+    Navarro, S. (2024, 12 noviembre). ¿Qué es un DBA o Administrador de Bases de Datos? KeepCoding Bootcamps. \url{https://keepcoding.io/blog/dba-requisitos-habilidades-y-responsabilidades/}
+
     \bibitem{SLAC}
     Barry, D. K. (s. f.). Stanford Linear Accelerator (SLAC). Service Architecture. \url{https://www.service-architecture.com/articles/object-oriented-databases/stanford-linear-}accelerator.html
 
@@ -568,9 +565,6 @@ Lo mejor que podemos hacer como usuarios es estar conscientes del impacto de nue
 
     \bibitem{GCloud}
     What is a relational database (RDBMS)? | Google Cloud. (s. f.). Google Cloud. \url{https://cloud.google.com/learn/what-is-a-relational-database}
-=======
-    \bibitem{KeepCoding}
-    Navarro, S. (2024, 12 noviembre). ¿Qué es un DBA o Administrador de Bases de Datos? KeepCoding Bootcamps. \url{https://keepcoding.io/blog/dba-requisitos-habilidades-y-responsabilidades/}
->>>>>>> 13ed3dc546784fd97277c79e39de297932b6c11f
+
 \end{thebibliography}
 \end{document}
