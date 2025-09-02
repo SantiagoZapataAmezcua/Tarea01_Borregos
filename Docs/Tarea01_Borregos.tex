@@ -148,7 +148,7 @@ Por lo que para una empresa en crecimiento que busca centralizar operaciones de 
   
         La independencia logica nos asegura el cambio en nuestro modelo de datos sin romper las aplicaciones, sin esta no existe:
         Los cambios pequeños rompen cosas por ejemplo el renombrar entidades o el separar direcciones en distintas columnas, las consultas y los reportes que usan estos nombres fallan.
-        De igualmanera sin independencia logica implica actualizar cada microservicio para volver a dar relacion y sentido a la base de datos y en el mismo sentido las inconsitencias y la diversidad en las soluciones a dichos problemas se vuelven otro problema que resolver haciendo de la evolucion un proceso lento y lleno de parches y errores.
+        De igualmanera sin independencia logica implica actualizar cada microservicio para volver a dar relacion y sentido a la base de datos y en el mismo sentido las inconsitencias y la diversidad en las soluciones a dichos problemas se vuelven otro problema que resolver haciendo de la evolucion un proceso lento y lleno de parches y errores.\\
         
   
   \item ¿Qu\'e problemas operativos aparecer\'ian s\'i no se logra la independencia f\'isica, especialmente en t\'erminos de almacenamiento y rendimiento?\\
@@ -157,7 +157,7 @@ Por lo que para una empresa en crecimiento que busca centralizar operaciones de 
         \begin{itemize}
             \item No puedes optimizar sin tocar codigo.
             \item El rendimiento es inestable.
-            \item Escalado y la migracion de nuestros datos se vuelven dificiles.
+            \item Escalado y la migracion de nuestros datos se vuelven dificiles.\\
         \end{itemize}
 
   
@@ -180,7 +180,7 @@ Por lo que para una empresa en crecimiento que busca centralizar operaciones de 
 
 
 
-\item Describe el papel que tienen los Sistemas Manejadores de Bases de Datos (SMBD) en el enfoque de bases de datos. ¿Por qu\'e consideras que es importante (o no) que un administrador de bases de datos (DBA) conozca las caracter\'isticas de un SMBD?
+\item Describe el papel que tienen los Sistemas Manejadores de Bases de Datos (SMBD) en el enfoque de bases de datos. ¿Por qu\'e consideras que es importante (o no) que un administrador de bases de datos (DBA) conozca las caracter\'isticas de un SMBD?\\
 \\
     Es importante que un administrador de bases de datos (DBA) conozca a fondo las características de un SMBD porque su trabajo no solo es guardar datos, sino darnos la certeza que la base funcione de manera confiable, eficiente y segura. Por ejemplo, un DBA debe entender cómo configurar esquemas, gestionar usuarios y permisos, aplicar mecanismos de respaldo y recuperación, optimizar consultas e índices, y controlar el acceso concurrente del equipo para evitar bloqueos o pérdidas de información. De la misma forma, el conocimiento de laa caracteristicas particulares de cada SMBD (ya sea Oracle, MySQL, PostgreSQL, SQL Server, MongoDB, etc.) le permite elegir la mejor estrategia de mantenimiento, escalabilidad y seguridad de acuerdo con las necesidades de la de la organizacion y del proyecto.
 
