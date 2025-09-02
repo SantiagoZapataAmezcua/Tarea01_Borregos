@@ -244,9 +244,20 @@ Existen dos tipos de redundancia: la Redundancia Intencional (\textbf{Controlada
 
 \item Imagina que formas parte del equipo de tecnolog\'ia de una empresa aseguradora que gestiona informaci\'on sobre p\'olizas, clientes, siniestros, evaluaciones de riesgo y cumplimiento normativo. Responde lo siguiente:
 \begin{itemize}
-  \item ¿Cu\'ales son las principales responsabilidades del DBA en este contexto, considerando la necesidad de confidencialidad, trazabilidad y disponibilidad continua de la informaci\'on?
-  \item ¿Qu\'e habilidades t\'ecnicas y conocimientos espec\'ificos (por ejemplo, manejo de datos sensibles, normativas como protecci\'on de datos personales, respaldo y recuperaci\'on ante desastres) son m\'as cr\'iticos para este entorno?
-  \item Si el DBA no ejecuta consultas directamente, ¿por qu\'e sigue siendo necesario que comprenda el modelo l\'ogico de la base de datos? Justifica tu respuesta considerando la importancia de la integridad de los datos en procesos como la evaluaci\'on de riesgos o la detecci\'on de fraudes.
+  \item ¿Cu\'ales son las principales responsabilidades del DBA en este contexto, considerando la necesidad de confidencialidad, trazabilidad y disponibilidad continua de la informaci\'on?\\
+  - Las responsabilidades principales del DBA en este contexto son el diseño y la creación de la base de datos considerando todas las especificaciones que requiera la empresa para poder operar correctamente gestionando la información sobre las pólizas, los clientes, siniestros
+  evaluaciones de riesgo el cumplimiento normativo, el mantenimiento de la misma, la optimización para asegurar que siga funcionando correctamente y que mejore el rendimiento aumentando la rapidez y eficiencia en el acceso a la información, así permite la disponibilidad continua de la información, además 
+  debe de implementar medidas de seguridad como el control de accesos para que solo las personas autorizadas puedan entrar o modificar la información configurando los permisos y encriptando datos sensibles, garantizando así la confidencialidad de los datos, y por supuesto el DBA debe de gestionar las 
+  copias de seguridad regulares de los datos y debe tener un plan para la recuperación de datos en caso de algún percance lo que asegura la trazabilidad de la información.
+  \item ¿Qu\'e habilidades t\'ecnicas y conocimientos espec\'ificos (por ejemplo, manejo de datos sensibles, normativas como protecci\'on de datos personales, respaldo y recuperaci\'on ante desastres) son m\'as cr\'iticos para este entorno?\\
+  - Algunas de las habilidades técnicas son: El DBA debe de dominar un Sistema Manejador de Bases de Datos o varios como Oracle, PostgreSQL, MySQL, entre otros, debe de tener conocimientos en lenguajes como SQL, además necesita saber como darle seguridad a la base de datos y protegerla de amenazas externas o internas,
+  saber implementar incriptación de datos sensibles y control de accesos, debe tener el conocimiento de estrategias de respaldo y recuperación de datos ante la posibilidad de algún desastre, además necesita tener la habilidad de resolver problemas constantemente, comunicarse efectivamente con los demás compañeros para un mejor trabajo, por otro 
+  lado un DBA debe tener conocimientos de lo que esta trabajando en este caso conocimientos acerca de las aseguradoras y como es que estas operann para poder facilitar su trabajo, además conocer las reglas de la empresa y muy importante que conozca las leyes, normas y regulaciones que hay en el país en el que se esta trabajando acerca de la 
+  protección de datos personales, privacidad y confidencialidad para no caer en una falta administrativa en empresa o incluso en un delito.
+  \item Si el DBA no ejecuta consultas directamente, ¿por qu\'e sigue siendo necesario que comprenda el modelo l\'ogico de la base de datos? Justifica tu respuesta considerando la importancia de la integridad de los datos en procesos como la evaluaci\'on de riesgos o la detecci\'on de fraudes.\\
+  - El DBA necesita comprender el modelo lógico de la base de datos, en primera por que ayuda a comprender como se estructuran los datos y permite entender cómo se relacionan estos entre si, además le da un conocimiento profundo de la base de datos para poder hacer el mantenimiento y la optimización de la misma, facilita ver si la base de datos 
+  cumple con los requisitos de la empresa, y por supuesto le permite conocer las restricciones de integridad que deben cumplirse para asegurar consistencia y precisión en los datos, lo cual ayuda en gran manera en procesos como la evaluación de riesgos o la detección de fraudes, ya que si los datos no son precisos y confiables, los análisis y decisiones que se tomen en base a estos 
+  datos pueden ser engañosos, o llevar a que la empresa tenga pérdidas importantes.
 \end{itemize}
 
 \item A lo largo del tiempo han existido diversos \textit{modelos de datos}, como el modelo jer\'arquico, el modelo de red, el modelo relacional, el modelo orientado a objetos y los modelos NoSQL (llave--valor, documento, columnares, grafos). Responde lo siguiente:
@@ -378,6 +389,22 @@ En mi opinión, es necesario que más personas, por cuenta propia, sean concient
 Notemos como todo lo abordado en el artículo acerca del \textbf{Big Data} y \textbf{IoT} implica que se haga el uso de las Bases de Datos puesto que son capaces de poder almacenar grande volúmenes de datos y ofrecen una velocidad y eficiencia la cual siempre sera requerida para poder manejar grandes cantidades de datos y poder ser convertidos en información valiosa para mulitples objetivos para las empresas, no podría ser posible si se usaran otros servicios como lo puede ser Excel puesto que tienen sus limitante, por eso hace sentido contar las características de una Base de Datos y su seguridad e integridad que pueden llegar a ofrecer. \\
 
 Para terminar, quiero comentar que los datos que siempre publiquemos o publiquemos en servicios web o de internet siempre tendran valor de alguna u otra manera y será importante que cada persona sea conciente de esto. Debemos saber en que lugares compartimos nuestra huella digital y que cada uno deberiamos tener un control sobre los mismos. A partir de este artículo pude conocer el valor significante que pueden tomar mis datos para algunas empresas y el como pueden formar parte del Big Data y IoT que son conceptos nuevos para mi. Personalmente no soy alguien que publique muchas cosas o dé información de mi vida en redes sociales, pero puedo ver lo mucho que pueden influir dichos datos. Creo que a futuro, esté es un tema que seguira dando de que hablar, con el tiempo las organizaciones y leyes establecidas equilibrarán la balanza entre usuario y compáñias con respecto a los datos, sobre todo para los usuarios puesto que tendran control de sus datos y también de su vida digital, para que finalmente los usuarios puedan ser dueños de sus propios datos. 
+
+\newpage
+\textbf{Ensayo\\
+        Autor: Kevin Jonathan Garduño Escobar}
+
+¿Alguna vez te has puesto a pensar que hacen las grandes compañías con tus datos personales e información que proporcionas por medio de internet?\\
+
+El artículo \textbf{The value of our personal data in the Big Data and the Internet of all Things Era} nos habla precisamente de este tema, hoy en día la era digital y la economía digital tienen sus bases en la información, pero esta información tiene un valor muy importante del cual los usuarios no están muy enterados, la información personal de las personas que utilizan el internet es usada por las empresas de manera que muchas personas pueden llegar a tomarlo como una violación de su privacidad y sus derechos, además se explora un poco acerca de las tecnologías como lo son el Big Data y el IoT (internet de las cosas) y como estas funcionan y revolucionaron la forma en que se reunen los datos y ayudan para que las grandes empresas generen ingresos en base a nuestra información. Yo creo que este tema es relevante porque nos hace reflexionar acerca de que es lo que aceptamos al navegar por internet, también que datos son los que compartimos conscientemente y los que las empresas pueden llegar a obtener sin que nosotros tengamos idea y que tanto valor tienen nuestros datos, aunque el uso que le dan a los datos ayuda a evolucionar muchos aspectos tecnológicos es importante que aclaren más el uso que le dan a estos y que ayuden a que nosotros los usuarios comprendamos y controlemos más nuestra información personal.\\
+
+La autora menciona que en cada momento que alguna persona utiliza algún dispositivo electrónico está dejando una huella de su vida y estos aparatos recolectan su información la cual ayuda a que las empresas obtengan distintos beneficios incluyendo ventajas competitivas y de este modo nuestros datos han estado bajo la mercantilización de la información, además argumenta que ahora nosotros como personas nos definen nuestro valor en datos y no lo que somos como persona convirtiéndonos en dígitos binarios estando dentro de la base de datos de algunas empresas, también al usar las redes sociales y más contenidos en línea no lo estamos haciendo de manera gratuita sino que nosotros terminamos siendo el activo de las empresas, ya que venden millones de usuarios a los anunciantes y de ahí surge la gran riqueza de estas. Señala una "Asimetría" de poder entre las instituciones y los usuarios generada por un desequilibrio total entre la información de los usuarios que tienen y la poca capacidad para controlarla, da una analogía de como los datos pueden ser considerados como el nuevo petróleo y así el como se generan terminan siendo el campo petrolero y entonces el Big Data y el IoT se consideran herramientas para las predicciones del mercado por las empresas en su intento de controlar este petróleo.\\
+
+Yo considero que todas estas ideas y hechos mostrados se relacionan en gran medida con la materia de fundamentos de bases de datos ya que se tocan los temas del almacenamiento y gestión de volúmenes masivos de datos que las compañías guardan y consultan para su propio beneficio, además el objetivo de todo esto es querer darnos un despertar como usuarios y que exigamos que haya regulaciones y transparencia para la obtención de datos que las compañías toman de nosotros y que nos permitan a nosotros mismos poder manejar y comercializar si así se desea nuestros propios datos.\\
+En lo personal estoy de acuerdo con que la falta de conocimiento de nosotros los usuarios en cuanto que se hace y que valor le dan a nuestra información es un problema grave y que nos afecta a todos, ya que el hecho de que podamos usar algo en internet de manera "gratuita" no significa eso en realidad, porque como mucha gente dice: "Si el producto es gratis, entonces tú eres el producto" puede que sea más verdad de lo que pensamos, ya que con nuestro simple historial se crean muchas publicidades de distinto índole que por ejemplo a mi mismo me han aparecido en redes sociales de cosas que consumo o podría llegar a consumir, por lo cual aunque termina siendo algo a lo que no siempre le damos importancia hay que pensar que puede llevar a prácticas invasivas a la privacidad si no hay una regulación adecuada.\\
+La temática central del artículo es el valor económico y social de los datos personales en la era digital y como subtemas algunos como la privacidad y las nuevas tecnologías como el Big Data y IoT.\\
+
+En conclusión solo me queda reafirmar que es de suma importancia saber que cosas son las que compartimos en internet y que datos pueden obtener de manera consensuada y estar alerta de las cosas que obtienen las empresas sin nuestro consentimiento, además del valor que nuestros datos personales pueden llegar a tener, aunque si bien es cierto que no puedes esperar que algo que usas mucho no te cueste nada porque también las compañías tienen que conseguir algo a cambio que los beneficie para poder brindarte estos servicios, así que tal vez no esta del todo mal que obtengan datos nuestros pero se pide más claridad, transparencia y seguridad de las acciones sobre nuestros datos, ya que sin seguridad podemos vernos gravemente afectados por un mal uso de estos. Yo considero muy valioso el que nos muestra la urgencia de crear herramientas y políticas que permitan a las personas entender y gestionar el valor de sus datos y aprendí a cuestionar más el uso que le damos a internet y la información con la que terminamos pagando, por lo tanto esto nos deja retos futuros de implementar regulaciones efectivas y ayudar con la seguridad para los datos de las personas.
 \end{enumerate}
 
 \end{enumerate}
@@ -394,21 +421,24 @@ Para terminar, quiero comentar que los datos que siempre publiquemos o publiquem
     Por qué no debes utilizar Excel como Base de Datos | Biuwer. (s. f.). \url{https://biuwer.com/es/blog/por-que-no-debes-utilizar-excel-como-base-de-datos}
 
     \bibitem{Oracle}
-    Oracle. (s. f.). Introduction to Oracle Database. https://docs.oracle.com/en/database/oracle/oracle-database/23/cncpt/introduction-to-oracle-database.html
+    Oracle. (s. f.). Introduction to Oracle Database. \url{https://docs.oracle.com/en/database/oracle/oracle-database/23/cncpt/introduction-to-oracle-database.html}
 
     \bibitem{IBM}
-    IBM. (n.d.). Database management systems (DBMSs). https://www.ibm.com/think/topics/database
+    IBM. (n.d.). Database management systems (DBMSs). \url{https://www.ibm.com/think/topics/database}
     
     \bibitem{IBM}
     Krantz, T., Jonker, A. (2025, 7 febrero). Redundancia de datos. IBM. \url{https://www.ibm.com/mx-es/think/topics/data-redundancy}
 
     \bibitem{DB book}
-    Silberschatz, A., Korth, H. F., & Sudarshan, S. (2019). Database system concepts (7.ª ed.). McGraw-Hill. https://www.db-book.com/
+    Silberschatz, A., Korth, H. F., \& Sudarshan, S. (2019). Database system concepts (7.ª ed.). McGraw-Hill. \url{https://www.db-book.com/}
     
     \bibitem{celerdata}
     CelerData. (2024, 5 octubre). Data Redundancy: What It Is and How to Manage It. CelerData. \url{https://celerdata.com/glossary/data-redundancy}
 
     \bibitem{IONOS}
     SGBD: introducción al sistema gestor de base de datos. (2020, 12 mayo). IONOS Digital Guide. \url{https://www.ionos.mx/digitalguide/hosting/cuestiones-tecnicas/sistema-gestor-de-base-de-datos-sgbd/}
+
+    \bibitem{KeepCoding}
+    Navarro, S. (2024, 12 noviembre). ¿Qué es un DBA o Administrador de Bases de Datos? KeepCoding Bootcamps. \url{https://keepcoding.io/blog/dba-requisitos-habilidades-y-responsabilidades/}
 \end{thebibliography}
 \end{document}
