@@ -144,14 +144,14 @@ Por lo que para una empresa en crecimiento que busca centralizar operaciones de 
 
 \item Una empresa de log\'istica necesita adaptar su Sistema de Base de Datos para incluir nuevas funcionalidades, como el seguimiento en tiempo real de paquetes y una nueva categor\'ia de clientes corporativos. Antes de realizar estos cambios, el equipo de desarrollo debe considerar los niveles de independencia de los datos. Responde lo siguiente:
 \begin{itemize}
-  \item ¿Qu\'e riesgos podr\'ian surgir s\'i no existe independencia l\'ogica entre el dise\~no conceptual y las aplicaciones que consumen los datos?
+  \item ¿Qu\'e riesgos podr\'ian surgir s\'i no existe independencia l\'ogica entre el dise\~no conceptual y las aplicaciones que consumen los datos?\\
   
         La independencia logica nos asegura el cambio en nuestro modelo de datos sin romper las aplicaciones, sin esta no existe:
         Los cambios pequeños rompen cosas por ejemplo el renombrar entidades o el separar direcciones en distintas columnas, las consultas y los reportes que usan estos nombres fallan.
         De igualmanera sin independencia logica implica actualizar cada microservicio para volver a dar relacion y sentido a la base de datos y en el mismo sentido las inconsitencias y la diversidad en las soluciones a dichos problemas se vuelven otro problema que resolver haciendo de la evolucion un proceso lento y lleno de parches y errores.
         
   
-  \item ¿Qu\'e problemas operativos aparecer\'ian s\'i no se logra la independencia f\'isica, especialmente en t\'erminos de almacenamiento y rendimiento?
+  \item ¿Qu\'e problemas operativos aparecer\'ian s\'i no se logra la independencia f\'isica, especialmente en t\'erminos de almacenamiento y rendimiento?\\
 
         Por otro lado la independencio fisica nos da la capacidad de optimizar como se guardan y ejecutan nuestros indices, particiones, discos... sin tocar las apps o esa parte intangible de nuestros sistemas. Sin ella las apps dependen de detalles "fisicos"
         \begin{itemize}
@@ -161,18 +161,18 @@ Por lo que para una empresa en crecimiento que busca centralizar operaciones de 
         \end{itemize}
 
   
-  \item Proporciona un ejemplo realista en el que un cambio f\'isico no afecte la l\'ogica del sistema, y otro donde un cambio l\'ogico pueda impactar m\'ultiples aplicaciones s\'i no se gestiona adecuadamente.
+  \item Proporciona un ejemplo realista en el que un cambio f\'isico no afecte la l\'ogica del sistema, y otro donde un cambio l\'ogico pueda impactar m\'ultiples aplicaciones s\'i no se gestiona adecuadamente.\\
 
 
          \begin{itemize}
          
              \item Cambio fisico que no afecta a la logica.
-               Una empresa de logística guarda todos los registros de entregas en una tabla muy grande llamada entregas. Con el tiempo, esa tabla crece demasiado y las consultas se vuelven lentas. En este punto se busca mejorar el rendimiento, el administrador decide mover la tabla a un servidor más rápido con discos SSD y crear un índice en la columna $"fechae_ntrega"$.
+               Una empresa de logística guarda todos los registros de entregas en una tabla muy grande llamada entregas. Con el tiempo, esa tabla crece demasiado y las consultas se vuelven lentas. En este punto se busca mejorar el rendimiento, el administrador decide mover la tabla a un servidor más rápido con discos SSD y crear un índice en la columna $"fechae\_ntrega"$.
                 Para las aplicaciones dedicadas a las consultas de los datos, nada cambia: siguen haciendo preguntas como “dame todas las entregas de ayer” con el mismo comando SQL. Lo único que mejora es la velocidad y eficiencia. Es decir, por debajo cambia el almacenamiento, pero la lógica de cómo se consulta permanece igual.
                 
              \item Cambio logico con multiples implicaciones.
-                Tenemos una tabla clientes tiene un campo $tipo_cliente$ con dos valores: “regular” y “premium”. La empresa ahora crea un nuevo segmento de clientes corporativos y decide cambiar la estructura de la tabla: elimina la columna $tipo_cliente$ y crea una tabla nueva llamada $segmentos_clientes$ con un catálogo más amplio.
-                  Si no se llevan estos cambios con cuidado las aplicaciones que dependían de $tipo_cliente$ dejarán de funcionar: reportes de ventas, facturación o hasta el sistema de seguimiento que valida beneficios de clientes especiales podrían fallar porque ya no encuentran la columna que usaban antes de los cambios.
+                Tenemos una tabla clientes tiene un campo $tipo\_cliente$ con dos valores: “regular” y “premium”. La empresa ahora crea un nuevo segmento de clientes corporativos y decide cambiar la estructura de la tabla: elimina la columna $tipo\_cliente$ y crea una tabla nueva llamada $segmentos\_clientes$ con un catálogo más amplio.
+                  Si no se llevan estos cambios con cuidado las aplicaciones que dependían de $tipo\_cliente$ dejarán de funcionar: reportes de ventas, facturación o hasta el sistema de seguimiento que valida beneficios de clientes especiales podrían fallar porque ya no encuentran la columna que usaban antes de los cambios.
          \end{itemize}
 
 \end{itemize}
@@ -181,7 +181,7 @@ Por lo que para una empresa en crecimiento que busca centralizar operaciones de 
 
 
 \item Describe el papel que tienen los Sistemas Manejadores de Bases de Datos (SMBD) en el enfoque de bases de datos. ¿Por qu\'e consideras que es importante (o no) que un administrador de bases de datos (DBA) conozca las caracter\'isticas de un SMBD?
-
+\\
     Es importante que un administrador de bases de datos (DBA) conozca a fondo las características de un SMBD porque su trabajo no solo es guardar datos, sino darnos la certeza que la base funcione de manera confiable, eficiente y segura. Por ejemplo, un DBA debe entender cómo configurar esquemas, gestionar usuarios y permisos, aplicar mecanismos de respaldo y recuperación, optimizar consultas e índices, y controlar el acceso concurrente del equipo para evitar bloqueos o pérdidas de información. De la misma forma, el conocimiento de laa caracteristicas particulares de cada SMBD (ya sea Oracle, MySQL, PostgreSQL, SQL Server, MongoDB, etc.) le permite elegir la mejor estrategia de mantenimiento, escalabilidad y seguridad de acuerdo con las necesidades de la de la organizacion y del proyecto.
 
 
@@ -293,6 +293,12 @@ Ya que nosotros como usuarios no comprendemos el uso que se le puede dar a nuest
 
 Se nos hace introducción de conceptos relativamente nuevos como lo es Big Data, que en resumen se puede definir como el conjunto de datos en masa que actualmente son difíciles de procesar; por otra parte, existe también el IoT (Internet de las Cosas), el cual se nos menciona como una red global constituida por dispositivos físicos conectados mediante internet y que son capaces de generar y enviar información. Incluso se habla de cómo nuestros datos personales pueden llegar a compararse con el nuevo petróleo y de cómo tecnologías como Big Data y IoT toman su valor dentro del mercado por la gran cantidad de volúmenes de datos que se manejan, los cuales podrían permitir predecir comportamientos, mejorar y crear nuevos modelos o servicios de un negocio, aunque esto no quiere decir que sea fácil contar con acceso a estos datos, pues se sabe que gran parte de ellos están bajo control de empresas de telecomunicaciones e internet.\\
 
+%----parte Santiago págs. 76 y 77 
+Igualmente, en esta última parte del texto se analiza la importancia de la protección de datos personales en el contexto del crecimiento del Big Data y el Internet de las Cosas, y cómo iniciativas como la del proyecto "Hub of All Things" buscan regresar al usuario el control sobre su propia información, operando como una plataforma digital donde los datos recolectados de las distintas formas en el día a día del usuario son almacenados y gestionados por los propios usuarios, quienes tienen las decisiones sobre con quién se comparten sus datos y para qué.
+
+En este sentido, también se habla de la intervención de la Unión Europea y su postura ante esta situación, enfatizando que la confianza de los usuarios es esencial para el desarrollo económico y ha establecido el Reglamento General de Protección de Datos (GDPR) como un marco regulatorio único que regula el tratamiento de datos personales. Ello tomando en cuenta que los datos personales se han convertido en un activo económico.
+
+En la recta final, al llegar a la parte de la conclusión, el documento enfatiza que los datos no pueden ser considerados neutrales, ya que reflejan cómo nos relacionamos con nuestro entorno. Señalando la importancia de que las personas sean consistentes con el manejo de sus datos e información, promoviendo la creación de Personal Data Stores (PDS) como vía para empoderar a las personas y fomentar un entorno más justo, donde el valor de los datos no quede concentrado únicamente en las empresas y organizaciones, sino que de la misma forma tenga la capacidad de beneficiar al individuo.
 
 
 
@@ -352,14 +358,6 @@ En este sentido, es clave entender que los datos personales funcionan como activ
 En conclusión, es importante reafirmar que para la plena justicia en esta era digital es vital el equilibrio en el control y acceso a la información, sobre todo evitando dejar caer todos los recursos sobre las empresas, como sucede hoy en día, pues ello solo alargará más la brecha de injusticia en el poder de la información. El aprendizaje más valioso que transmite la lectura es que es indispensable empoderar a los individuos a través de iniciativas gubernamentales, educativas y empresariales para retomar el acceso al control y manejo de su información. Y si bien el tema abre horizontes a nuevos retos a futuro sobre cómo equilibrar innovación y derechos fundamentales, cómo garantizar justicia en el uso de las nuevas ciencias y tecnologías y, sobre todo, cómo construir una cultura digital más consciente y activa sobre uno de los activos más importantes en la economía contemporánea: la información.
 
         
-
-
-
-
-
-
-
-
 
 \newpage
 \textbf{Ensayo\\
